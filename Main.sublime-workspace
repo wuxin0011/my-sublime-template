@@ -1,0 +1,1005 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"star",
+				"startsWith"
+			],
+			[
+				"templ",
+				"templateContent"
+			],
+			[
+				"temp",
+				"templateContent"
+			],
+			[
+				"tempfi",
+				"templateFile"
+			],
+			[
+				"read",
+				"readFile"
+			],
+			[
+				"BU",
+				"BufferedReader"
+			],
+			[
+				"st",
+				"startsWith"
+			],
+			[
+				"lc",
+				"jlc\tjava-lc-template"
+			],
+			[
+				"jlc",
+				"javalc\tjava-lc-util"
+			],
+			[
+				"nextIn",
+				"nextInt()"
+			],
+			[
+				"print",
+				"printf\tprintf …"
+			],
+			[
+				"sol",
+				"solution"
+			],
+			[
+				"nu",
+				"nums1"
+			],
+			[
+				"so",
+				"solution"
+			],
+			[
+				"tocha",
+				"toCharArray()"
+			],
+			[
+				"solu",
+				"solution"
+			],
+			[
+				"solutio",
+				"solution"
+			],
+			[
+				"co",
+				"copyOf"
+			],
+			[
+				"solo",
+				"solution"
+			],
+			[
+				"he",
+				"heapify"
+			],
+			[
+				"rein",
+				"readInt"
+			],
+			[
+				"In",
+				"Integer"
+			],
+			[
+				"di",
+				"directions"
+			],
+			[
+				"p",
+				"positions"
+			],
+			[
+				"rev",
+				"reverse"
+			],
+			[
+				"upda",
+				"update"
+			],
+			[
+				"fir",
+				"first()"
+			],
+			[
+				"low",
+				"lowerEntry()"
+			],
+			[
+				"comto",
+				"compareTo"
+			],
+			[
+				"Arr",
+				"ArrayList"
+			],
+			[
+				"th",
+				"throws"
+			],
+			[
+				"Throw",
+				"throws"
+			],
+			[
+				"eqa",
+				"equationsPossible"
+			],
+			[
+				"se",
+				"search"
+			],
+			[
+				"Ma",
+				"MagicDictionary"
+			],
+			[
+				"bu",
+				"buildTrie"
+			],
+			[
+				"coof",
+				"copyOf()"
+			],
+			[
+				"array",
+				"arraycopy()"
+			],
+			[
+				"entr",
+				"entrySet()"
+			],
+			[
+				"lowb",
+				"lowerBount"
+			],
+			[
+				"bin",
+				"binarySearch()"
+			],
+			[
+				"bea",
+				"beautifulSubarrays"
+			],
+			[
+				"si",
+				"size2"
+			],
+			[
+				"size",
+				"size2"
+			],
+			[
+				"t",
+				"toCharArray"
+			],
+			[
+				"larg",
+				"largestDivisibleSubset"
+			],
+			[
+				"ent",
+				"entrySet()"
+			],
+			[
+				"bicou",
+				"bitCount"
+			],
+			[
+				"qi",
+				"queries"
+			],
+			[
+				"min",
+				"min2"
+			],
+			[
+				"max",
+				"max2"
+			],
+			[
+				"ma",
+				"max3"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"construct",
+				"constructorsIn()"
+			],
+			[
+				"qey",
+				"query"
+			],
+			[
+				"que",
+				"query"
+			],
+			[
+				"qr",
+				"query"
+			],
+			[
+				"hash",
+				"HashSet"
+			],
+			[
+				"So",
+				"Solution"
+			],
+			[
+				"da",
+				"date2"
+			],
+			[
+				"Da",
+				"DAYS"
+			],
+			[
+				"sp",
+				"spiralOrder1"
+			],
+			[
+				"cos",
+				"cost"
+			],
+			[
+				"man",
+				"MAXN"
+			],
+			[
+				"la",
+				"largestNumber"
+			],
+			[
+				"lo",
+				"lower_bound"
+			],
+			[
+				"do",
+				"down"
+			],
+			[
+				"get",
+				"getenv"
+			],
+			[
+				"E",
+				"ErrorR"
+			],
+			[
+				"jv",
+				"jobv"
+			],
+			[
+				"job",
+				"jobv"
+			],
+			[
+				"che",
+				"checkSum"
+			],
+			[
+				"MA",
+				"MAXN"
+			],
+			[
+				"r",
+				"reverse"
+			],
+			[
+				"Pro",
+				"PriorityQueue"
+			],
+			[
+				"Array",
+				"ArrayList"
+			],
+			[
+				"ca",
+				"catch"
+			],
+			[
+				"rearr",
+				"readIntArray"
+			],
+			[
+				"re",
+				"readStringArray"
+			],
+			[
+				"rea",
+				"readStringArray"
+			],
+			[
+				"Stin",
+				"String"
+			],
+			[
+				"create",
+				"createNewFile"
+			],
+			[
+				"getPa",
+				"getAbsolutePath"
+			],
+			[
+				"prin",
+				"println"
+			],
+			[
+				"Buff",
+				"BufferedReader"
+			],
+			[
+				"doub",
+				"doubleGridSum"
+			],
+			[
+				"arr",
+				"arr2"
+			],
+			[
+				"pa",
+				"path"
+			],
+			[
+				"Run",
+				"Runtime"
+			],
+			[
+				"ne",
+				"needRemove"
+			],
+			[
+				"Pt",
+				"PriorityQueue"
+			],
+			[
+				"q",
+				"queries"
+			],
+			[
+				"sdio",
+				"stdio.h"
+			],
+			[
+				"hea",
+				"heapSort"
+			],
+			[
+				"mo",
+				"money"
+			],
+			[
+				"1",
+				"p1"
+			],
+			[
+				"map",
+				"map2"
+			],
+			[
+				"ran",
+				"random"
+			],
+			[
+				"c",
+				"camelMatch"
+			],
+			[
+				"test",
+				"test03"
+			],
+			[
+				"ch",
+				"charToInt"
+			],
+			[
+				"cnt",
+				"cnt2"
+			],
+			[
+				"cn",
+				"cnt2"
+			],
+			[
+				"Pri",
+				"PriorityQueue"
+			],
+			[
+				"is",
+				"isP"
+			],
+			[
+				"cou",
+				"countSort"
+			],
+			[
+				"coun",
+				"countSort"
+			],
+			[
+				"su",
+				"sum2"
+			],
+			[
+				"Ru",
+				"RuntimeException"
+			],
+			[
+				"info",
+				"info2"
+			],
+			[
+				"day",
+				"daysBetweenDates"
+			],
+			[
+				"date",
+				"date2"
+			],
+			[
+				"tem",
+				"template"
+			],
+			[
+				"Nu",
+				"NullPointerException"
+			],
+			[
+				"ab",
+				"abspath"
+			],
+			[
+				"Cod",
+				"Code08"
+			],
+			[
+				"suf",
+				"suf_o"
+			],
+			[
+				"Code",
+				"Code04"
+			],
+			[
+				"d",
+				"deleteDuplicates"
+			],
+			[
+				"conte",
+				"content_text"
+			],
+			[
+				"pri",
+				"printClassInfo"
+			],
+			[
+				"printin",
+				"printClassInfo"
+			],
+			[
+				"w",
+				"writeFile"
+			],
+			[
+				"Bu",
+				"BufferedOutputStream"
+			],
+			[
+				"fi",
+				"FileInputStream"
+			],
+			[
+				"Code1",
+				"Code18"
+			],
+			[
+				"qu",
+				"querySelectorAll"
+			],
+			[
+				"bufe",
+				"BufferedWriter"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "package/JavaBuilder.sublime-build",
+			"settings":
+			{
+				"buffer_size": 2574,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/User/JavaBuilder.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					""
+				],
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					"Run In Terminus"
+				],
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					"Run in CMD"
+				],
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					"Run in Sublime"
+				],
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					"Run in Sublime and input"
+				],
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					"Run in Sublime and input and output use Git "
+				],
+				[
+					"Packages/User/JavaBuilder.sublime-build",
+					"Run in Sublime and input and output "
+				]
+			],
+			[
+				"Packages/User/JavaBuilder.sublime-build",
+				"Run in Sublime"
+			]
+		]
+	],
+	"build_varint": "Run in Sublime",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"FastOlympic",
+				"FastOlympicCoding: Run"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"jio",
+				"Snippet: jio"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"snippet java",
+				"Snippet: JavaFX public class"
+			],
+			[
+				"",
+				"Bookmarks: Clear All"
+			],
+			[
+				"forma",
+				"Eclipse: Format Java"
+			],
+			[
+				"Snippet: ",
+				"Snippet: class - constructor"
+			],
+			[
+				"java",
+				"Project: Save As"
+			],
+			[
+				"custom",
+				"UI: Customize Theme"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"format",
+				"Eclipse: Format Java"
+			],
+			[
+				"packageins",
+				"Package Control: Install Package"
+			],
+			[
+				"tht",
+				"UI: Customize Theme"
+			],
+			[
+				"thtme",
+				"UI: Customize Theme"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"colo",
+				"UI: Select Color Scheme"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/desktop/JavaCode",
+		"/D/desktop/JavaCode/bin",
+		"/D/desktop/JavaCode/in",
+		"/D/desktop/JavaCode/out"
+	],
+	"file_history":
+	[
+		"/D/desktop/JavaCode/snippet/java-fiof-template.sublime-snippet",
+		"/D/desktop/JavaCode/snippet/java-fio-template.sublime-snippet",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/java-lc-template.sublime-snippet",
+		"/D/desktop/JavaCode/_ACMTemplate.java",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/JavaBuilder.sublime-build",
+		"/D/desktop/JavaCode/package/JavaBuilder.sublime-build",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/java-fiof-template.sublime-snippet",
+		"/D/desktop/JavaCode/_LCUtil.java",
+		"/D/desktop/JavaCode/T_01.java",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/java-fio-template.sublime-snippet",
+		"/D/desktop/JavaCode/_LCTemplate.java",
+		"/D/desktop/JavaCode/ACM_template.txt",
+		"/D/desktop/JavaCode/LC_01.java",
+		"/D/desktop/JavaCode/LC_02.java",
+		"/D/desktop/JavaCode/LC_03.java",
+		"/D/desktop/JavaCode/in/LC_03/in.txt",
+		"/D/desktop/JavaCode/LC_00.java",
+		"/D/desktop/JavaCode/in/CF_04/in.txt",
+		"/D/desktop/JavaCode/in.txt",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/java-lc-util.sublime-snippet",
+		"/D/desktop/JavaCode/CF_07.java",
+		"/D/desktop/JavaCode/CF_05.java",
+		"/D/desktop/JavaCode/CF_04.java",
+		"/D/desktop/JavaCode/CF_01.java",
+		"/D/desktop/JavaCode/CF_03.java",
+		"/D/desktop/JavaCode/Solution.java",
+		"/D/desktop/JavaCode/template.txt",
+		"/D/desktop/JavaCode/Code07.java",
+		"/D/desktop/JavaCode/Code04.java",
+		"/D/desktop/JavaCode/ACMTemplate.java",
+		"/D/desktop/JavaCode/in/Code04/in.txt",
+		"/D/desktop/JavaCode/LCUtil.java",
+		"/D/desktop/JavaCode/Code05.java",
+		"/D/desktop/JavaCode/LCTemplateCreate.java",
+		"/D/desktop/JavaCode/solution.txt",
+		"/D/desktop/JavaCode/Code08.java",
+		"/D/desktop/JavaCode/Code06.java",
+		"/D/desktop/LCUtil.java",
+		"/D/desktop/JavaCode/template/number/Base.java",
+		"/D/desktop/JavaCode/template/number/Palindrome.java",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-08/LCUtil.java",
+		"/D/desktop/JavaCode/TestUtil.java",
+		"/D/desktop/subime-setting/java-fio-template.sublime-snippet",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/FastOlympicCoding.sublime-settings",
+		"/D/desktop/JavaCode/Main.java",
+		"/D/desktop/Main.java",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-08/Main.java",
+		"/D/desktop/node.js",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-08/排球比赛(1).cpp",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-08/IO.java",
+		"/D/desktop/CPP/c.cpp",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/cpp-snippet.sublime-snippet",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/cpp-template.sublime-snippet",
+		"/D/desktop/CPP/project/01.cpp",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/java-debug-template.sublime-snippet",
+		"/D/desktop/CPP/project/Main.java",
+		"/C/Users/Administrator/.ssh/javaisbestlang",
+		"/C/Users/Administrator/.ssh/id_rsa.pub",
+		"/C/Users/Administrator/.ssh/javaisbestlang.pub",
+		"/C/Users/Administrator/.ssh/id_rsa",
+		"/D/desktop/JavaCode/template/file.txt",
+		"/D/desktop/sshkey/javaisbestlang.pub",
+		"/D/desktop/sshkey/javaisbestlang",
+		"/D/desktop/javaisbestlang.github.io/.git/config",
+		"/D/desktop/IO.java",
+		"/D/desktop/algorithm-study/cpp_code/task2/task2.cpp",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/CppBuilder.sublime-build",
+		"/D/desktop/py_code/py.template",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/python-lc-template.sublime-snippet",
+		"/D/desktop/C++_Code/project/01.cpp",
+		"/D/desktop/noder.js",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/User/jio.sublime-snippet",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text/Packages/Java/Snippets/java_io.sublime-snippet",
+		"/D/desktop/a.java",
+		"/D/desktop/JavaCode/Code01.java",
+		"/D/desktop/JavaCode/Code02.java",
+		"/D/desktop/url.js",
+		"/D/desktop/newJS.js",
+		"/D/desktop/Learn/leetcode/main/java/leetcode/contest/biweekly/bi_100/bi_136/b/B.java",
+		"/D/desktop/html.json",
+		"/D/desktop/html/node.js",
+		"/D/desktop/JavaCode/template/acm/template3/Main.java",
+		"/D/desktop/JavaCode/template/number/QualityFactor.java",
+		"/D/desktop/JavaCode/template/segment/Segment1.java",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-07/Segment1(1).java",
+		"/D/desktop/JavaCode/Code03.java",
+		"/D/desktop/JavaCode/template/number/PrimeNumber.java",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-07/index.js",
+		"/E/software/weChatFile/WeChat Files/wxid_qc4ttcbelyb522/FileStorage/File/2024-07/Segment1.java",
+		"/D/desktop/html/b.html",
+		"/D/desktop/py_code/05.py",
+		"/D/desktop/JavaCode/1600-1900.json",
+		"/D/desktop/t.js",
+		"/D/desktop/Learn/awesome/python/PyIsTheBestLang-main/pytest.ini",
+		"/D/desktop/Learn/awesome/java/algorithm-pattern-java/advanced_algorithm/greedy.md",
+		"/D/desktop/JavaCode/in/Code03/in.txt",
+		"/D/desktop/JavaCode/in/Main/in.txt",
+		"/D/desktop/JavaCode/in/Code07/temp.txt",
+		"/D/desktop/JavaCode/in/Code07/in.txt",
+		"/D/desktop/JavaCode/in/Main/temp.txt",
+		"/D/desktop/JavaCode/in/Main/out.txt",
+		"/D/desktop/JavaCode/in/Code07/out.txt",
+		"/D/desktop/JavaCode/template/Test.java",
+		"/D/desktop/Learn/leetcode/main/java/code_generation/utils/ACM/IO.java",
+		"/D/desktop/Learn/leetcode/main/java/template/union/DefaultUnion.java",
+		"/D/desktop/py_code/T.json",
+		"/D/desktop/code-java/Code56.java",
+		"/D/desktop/code-java/Code71.java",
+		"/D/desktop/Learn/tampermonkey-script/live-plugin/vite.config.js",
+		"/D/desktop/test/test-vue/src/style.css",
+		"/D/desktop/temp (2).txt",
+		"/D/desktop/py_code/02.py",
+		"/D/desktop/py_code/01.py",
+		"/D/desktop/index.html",
+		"/D/desktop/request_config/headers.properties",
+		"/D/desktop/1400-1600.log",
+		"/D/desktop/py_code/template.py",
+		"/D/desktop/py_code/03.py",
+		"/D/desktop/1600-1900.txt",
+		"/D/desktop/JavaCode/Code00.java",
+		"/D/desktop/code-java/Code00.java",
+		"/D/desktop/code-java/Code63.java",
+		"/D/desktop/code-java/Code70.java",
+		"/D/desktop/code-java/Code69.java",
+		"/D/desktop/code-java/Code67.java",
+		"/D/desktop/test.txt",
+		"/D/desktop/code-java/in/Code68/in.txt",
+		"/D/desktop/code-java/Code68.java"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 151.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"createFile",
+			"createNewFile",
+			"isAbsolutePath",
+			"readFile",
+			"not",
+			"not find",
+			"find",
+			"not",
+			"checkCode00",
+			"readFile",
+			"readfile",
+			"in.txt",
+			"code00",
+			"1802"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"checkFile"
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "package/JavaBuilder.sublime-build",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2574,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JSON/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 53.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 32.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/JavaBuilder.sublime-build",
+	"project": "Main.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\Administrator\\AppData\\Roaming\\Sublime Text\\Packages\\User\\cpp-snippet.sublime-snippet"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 199.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 396.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

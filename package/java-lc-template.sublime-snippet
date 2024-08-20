@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+import java.util.*;
+import java.math.BigInteger;
+import java.io.*;
+
+public class ${TM_FILENAME/(\w+)\.java/\1/g} {
+    public static void main(String[] args) {
+
+         _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g},"null","../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt");
+         
+    }
+}
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>jlc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>
