@@ -2343,7 +2343,8 @@ public class _LCUtil {
             StringBuilder eb = new StringBuilder();
             int m = r.length(), n = e.length();
             if (("[]".equals(r) && !"[]".equals(e)) || ("{}".equals(r) && !"{}".equals(e)) || ("null".equals(r) && !"null".equals(e))) {
-                rb.append(CustomColor.error(r));
+                // rb.append(CustomColor.error(r));
+                rb.append(r);
                 eb.append(e);
             } else {
                 for (int i = 0, j = 0; i < m || j < n; ++i, ++j) {
@@ -2384,7 +2385,8 @@ public class _LCUtil {
                             }
                         }
                     }
-                    rb.append(isEquals ? result : CustomColor.error(result));
+                    // rb.append(isEquals ? result : CustomColor.error(result));
+                    rb.append(result);
                     if (isDot) {
                         rb.append(",");
                     }

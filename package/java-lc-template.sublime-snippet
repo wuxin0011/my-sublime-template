@@ -7,7 +7,7 @@ import java.io.*;
 public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     public static void main(String[] args) {
 
-         _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g},"null","../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt");
+         _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g}.class,"null","../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt");
          
     }
 }
