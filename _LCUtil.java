@@ -146,6 +146,16 @@ public class _LCUtil {
             }
             if (inputList == null || inputList.size() == 0) {
                 System.exit(0);
+            } else {
+                List<String> temp = new ArrayList<String>();
+                for (String s : inputList) {
+                    s = StringUtils.ingoreString(s);
+                    if ("".equals(s)) {
+                        continue;
+                    }
+                    temp.add(s);
+                }
+                inputList = temp;
             }
             if (CLASS_FLAG.equals(methodName)) {
                 find = true;
