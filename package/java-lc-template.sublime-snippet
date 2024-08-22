@@ -4,15 +4,21 @@ import java.util.*;
 import java.math.BigInteger;
 import java.io.*;
 
+
+/*
+@testcase-start
+
+@testcase-end
+*/
+
 public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     public static void main(String[] args) {
 
-         _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g}.class,"null","../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt");
+         // _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g}.class,"null","../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt");
+         _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g}.class,"null","__TEST_CASE__");
          
     }
 }
-
-
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>jlc</tabTrigger>

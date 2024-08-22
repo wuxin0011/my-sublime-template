@@ -1,0 +1,16 @@
+import java.util.*; 
+import java.io.*; 
+
+/*
+@testcase-start
+
+@testcase-end
+*/
+
+public class Template {
+    public static void main(String[] args) {
+
+         // _LCUtil.run(Template.class,"null","../in/Template/in.txt");
+         _LCUtil.run(Template.class,"null","__TEST_CASE__");
+	}
+}

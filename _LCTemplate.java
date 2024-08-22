@@ -9,20 +9,22 @@ public class _LCTemplate {
     private static final File file = new File("");
     private static final String compileDir = "bin";
     private static final String FilePrefix = "LC_";
-    private static final String LC_UTIL_NAME = "_LCUtil";
-
+    private static final String template_file_name = "_LC_template.txt";
+    private static final String TEMPLATE_FLAG = "Template";
+    private static File templateFile;
     static {
         String path = file.getAbsolutePath();
         if(path.contains(compileDir)){
             path = path.replace(compileDir,"");
         }
         root_dir = path;
-        checkCode00();
+        templateFile = new File(root_dir + File.separator + template_file_name);
+        checkFile();
     }
 
     public static void main(String[] args) {
         int cnt = countJavaFile();
-        String fileName =FilePrefix +(cnt < 10 ? ("0" + cnt):String.valueOf(cnt)) + ".java";
+        String fileName =FilePrefix+(cnt < 10 ? ("0" + cnt):String.valueOf(cnt)) + ".java";
         String javaFilePath = root_dir + fileName;
         String template = content(fileName);
         createInputAndOutputFile(javaFilePath);
@@ -49,7 +51,6 @@ public class _LCTemplate {
             if(!file.exists()){
                 file.createNewFile();
             }
-
             BufferedWriter w = new BufferedWriter(new FileWriter(file));
             w.write(content,0,content.length());
             w.flush();
@@ -58,6 +59,36 @@ public class _LCTemplate {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+
+   public static String readFile(File file) {
+        if(file == null) {
+            return "";
+        }
+        if (!file.exists()) {
+            System.out.println(file.getAbsolutePath() + " not found!");
+            return null;
+        }
+        BufferedReader breder = null;
+        BufferedInputStream bis = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            breder = new BufferedReader(new FileReader(file));
+            String t = null;
+            while ((t = breder.readLine()) != null) {
+                sb.append(t);
+                sb.append("\n");
+            }
+        } catch (Exception e) {
+            System.err.println("parse failed " + e.getMessage());
+        } finally {
+            try{
+                if(breder != null) breder.close();
+                if(bis != null) bis.close();
+            }catch(IOException e){}
+        }
+        return sb.toString();
     }
     public static void printMethodInfo(Class<?> c){
         Method[] mts  = c.getDeclaredMethods();
@@ -74,26 +105,10 @@ public class _LCTemplate {
             className = className.replace(".java","");
         }
         StringBuilder sb = new StringBuilder();
-        sb.append("import java.util.*; \n");
-        sb.append("import java.io.*; \n\n");
-        sb.append("public class ").append(className).append(" {");
-        sb.append("\n    public static void main(String[] args) {\n\n");
-        sb.append("         ");
-        sb.append(LC_UTIL_NAME);
-        sb.append(".run(");
-        sb.append(className);
-        sb.append(".class");
-        sb.append(",");
-        sb.append("\"null\"");
-        sb.append(",");
-        sb.append("\"");
-        sb.append("../in/");
-        sb.append(className);
-        sb.append("/in.txt");
-        sb.append("\"");
-        sb.append(");\n");
-        sb.append("\t}\n");
-        sb.append("}");
+        String templateContent = readFile(templateFile);
+        System.out.println("content = " + templateContent);
+        templateContent = templateContent.replace(TEMPLATE_FLAG,className);
+        sb.append(templateContent);
         return sb.toString();
 
     }
@@ -101,10 +116,10 @@ public class _LCTemplate {
 
     public static void createInputAndOutputFile(String javaFilePath) {
         try{
-            File file = new File(javaFilePath);
-            String fileName = file.getName().replace(".java","");
-            String path = root_dir + File.separator + "in" + File.separator  + fileName + File.separator;
-            createNewFile(path +  "in.txt");
+            // File file = new File(javaFilePath);
+            // String fileName = file.getName().replace(".java","");
+            // String path = root_dir + File.separator + "in" + File.separator + fileName + File.separator;
+            // createNewFile(path +  "in.txt");
             // createNewFile(path +  "out.txt");
             // createNewFile(path +  "temp.txt");
         }catch(Exception e) {
@@ -133,7 +148,7 @@ public class _LCTemplate {
 
 
     // check code00 
-    public static void checkCode00() {
+    public static void checkFile() {
         try{
 
             String path = root_dir + "in" + File.separator + _LCTemplate.class.getSimpleName() + File.separator;

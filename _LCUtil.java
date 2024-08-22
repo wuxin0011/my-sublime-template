@@ -13,6 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+
+
 /******************************************************** use ********************************************************
 
  1 config
@@ -32,10 +34,33 @@ import java.util.regex.Pattern;
 
 
  3 example:
+
  LCUtil.run(Hello.class, "checkRecord", "solution.txt");
  LCUtil.run(Hello.class, "checkRecord", "solution.txt"，true,false);
  LCUtil.run(Hello.class, "__ConstructorClass__", "solution.txt"，true,false);
+
+
+ 4  use testcase-code parse
+
+    LCUtil.run(Hello.class, "checkRecord", "__TEST_CASE__");
+
+
+    @testcase-start
+
+    3
+    4
+    6
+
+    2
+    7
+    15
+
+    @testcase-end
+
  ********************************************************************************************************************
+
+
+*/
  /**
  * @author: wuxin0011
  * @Description:
@@ -50,8 +75,15 @@ public class _LCUtil {
     public static final String DEFAULT_READ_FILE = "in.txt";
     public static final boolean DEFAULT_SUPPORT_LONG_CONTENT = false;
     public static final boolean IS_STRICT_EQUAL = true;
+    public static final String TEST_CASE_FLAG = "__TEST_CASE__";
+    public static final String TEST_CASE_START = "@testcase-start";
+    public static final String TEST_CASE_END = "@testcase-end";
 
     private static String ROOT_DIR = "null";
+
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("user.dir"));
+    }
 
     static {
         getProjectRootDir();
@@ -106,8 +138,13 @@ public class _LCUtil {
         check(src, methodName, fileName);
         boolean find = false;
         try {
-            List<String> inputList = readFile(src, fileName, openLongContent);
-            if (inputList == null) {
+            List<String> inputList = null;
+            if(TEST_CASE_FLAG.equals(fileName)) {
+                inputList = readTestCase(src);
+            }else {
+                inputList = readFile(src, fileName, openLongContent);
+            }
+            if (inputList == null || inputList.size() == 0) {
                 System.exit(0);
             }
             if (CLASS_FLAG.equals(methodName)) {
@@ -442,31 +479,36 @@ public class _LCUtil {
     }
 
     public static List<String> readFile(String path, String fileName, boolean openLongContent) {
-        if(isAbsolutePath(fileName) && (System.getProperty("os.name").contains("window") || System.getProperty("os.name").contains("Window"))) {
-            if(fileName.contains(".java")) {
-                String[] fileNames = fileName.split("/");
-                String className = "";
-                String readFileName = "";
-                for(String name : fileNames) {
-                    if(name.contains(".java")) {
-                        className = name.replace(".java","");
+        if(TEST_CASE_FLAG.equals(fileName)) {
+            System.out.println("path = " + path + ",fileName = " + fileName);
+        }else {
+           if(isAbsolutePath(fileName) && (System.getProperty("os.name").contains("window") || System.getProperty("os.name").contains("Window"))) {
+                if(fileName.contains(".java")) {
+                    String[] fileNames = fileName.split("/");
+                    String className = "";
+                    String readFileName = "";
+                    for(String name : fileNames) {
+                        if(name.contains(".java")) {
+                            className = name.replace(".java","");
+                        }
                     }
+                    fileName = System.getProperty("user.dir") + "/../in/" + className + "/in.txt";
+                }else if((fileName.startsWith("\\") ||fileName.startsWith("/")) && !fileName.contains(":")  ) {
+                    StringBuilder sb = new StringBuilder();
+                    for(int i = 0;i < fileName.length();i++) {
+                        if( i == 0) {
+                            continue;
+                        }
+                        sb.append(fileName.charAt(i));
+                        if(i == 1) {
+                            sb.append(":");
+                        }
+                    }
+                    fileName = sb.toString();
                 }
-                fileName = System.getProperty("user.dir") + "/../in/" + className + "/in.txt";
-            }else if((fileName.startsWith("\\") ||fileName.startsWith("/")) && !fileName.contains(":")  ) {
-                StringBuilder sb = new StringBuilder();
-                for(int i = 0;i < fileName.length();i++) {
-                    if( i == 0) {
-                        continue;
-                    }
-                    sb.append(fileName.charAt(i));
-                    if(i == 1) {
-                        sb.append(":");
-                    }
-                }
-                fileName = sb.toString();
-            }
         }
+        }
+        
         File file = new File(isAbsolutePath(fileName) ? fileName : (path + fileName));
 
         
@@ -723,6 +765,35 @@ public class _LCUtil {
             return "";
         } finally {
             close(bis);
+        }
+    }
+
+
+    public static List<String> readTestCase(Class<?> src) {
+        try{
+            Class<?> origin = ReflectUtils.loadOrigin(src);
+            String newFileName = buildAbsolutePath(origin) + "../" + origin.getSimpleName()+".java";
+            File file = new File(newFileName);
+            BufferedReader bf = new BufferedReader(new FileReader(file));
+            String s = null;
+            List<String> result = new ArrayList<>();
+            int st = -1;
+            while((s = bf.readLine())!=null) {
+                if(s.contains(TEST_CASE_END)) {
+                    break;
+                }
+                if(s.contains(TEST_CASE_START)) {
+                    st = 0;
+                    continue;
+                }
+                if(st != -1) {
+                    result.add(s);
+                }
+            }
+            bf.close();
+            return result;
+        }catch(Exception e){
+            return null;
         }
     }
 
