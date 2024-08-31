@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[
+    <content><![CDATA[
 
 import java.io.*;
 import java.util.*;
@@ -9,14 +9,19 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
     static int MAXN = (int) 1e6 + 1;
 
+    // static int[] a = new int[MAXN];
+    // static String[] a = new String[MAXN];
+
+
     public static void solve() {
-        // todo ...
+
+       
     }
 
     public static void main(String[] args) {
         int t = 1;
         // t = read();
-        while (t > 0) {
+        while(t > 0) {
             solve();
             t--;
         }
@@ -59,33 +64,33 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
     static void printArray(int[] arr, int st, int end) {
-        System.out.print("[");
+        print("[");
         for (int i = st; i < end; i++) {
-            System.out.print(arr[i]);
+            print(arr[i]);
             if (i != end - 1) {
-                System.out.print(", ");
+                print(", ");
             }
         }
-        System.out.print("]\n");
+        print("]\n");
     }
 
     static void printArray(long[] arr, int st, int end) {
-        System.out.print("[");
+        print("[");
         for (int i = st; i < end; i++) {
-            System.out.print(arr[i]);
+            print(arr[i]);
             if (i != end - 1) {
-                System.out.print(", ");
+                print(", ");
             }
         }
-        System.out.print("]\n");
+        print("]\n");
     }
 
     static void printArray(int[][] arr, int rowStart, int rowEnd, int colStart, int colEnd) {
-        System.out.print("[\n");
+        print("[\n");
         for (int i = rowStart; i < rowEnd; i++) {
             printArray(arr[i], colStart, colEnd);
         }
-        System.out.print("]\n");
+        print("]\n");
     }
 
     public static final String DEFAULT_FILE_NAME = "in.txt"; // default read file
@@ -139,6 +144,108 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
         }
     }
 
+
+    public static int[] readIntArray(){
+         long[] temp = readLongArray();
+         if(temp == null) {
+            return null;
+         }
+         int[] ints = new int[temp.length];
+         for(int i = 0;i < temp.length;i++) {
+            if(temp[i] < Integer.MIN_VALUE || temp[i] > Integer.MAX_VALUE){
+                throw new RuntimeException("overflow int type");
+            }
+            ints[i] = (int)temp[i];
+         }
+         return ints;
+    }
+
+
+    public static long[] LONG_ARRAY = null;
+    public static long[] readLongArray(){
+        if( LONG_ARRAY == null) {
+            LONG_ARRAY = new long[100001];
+        }
+        int size = 0;
+        while(true) {
+            try{
+                int f = 1;
+                long x = 0;
+                int c = br.read();
+                if(c == -1) {
+                    break;
+                }
+                while (c < '0' || c > '9') {
+                    if (c == '-') {
+                        f = -1;
+                    }
+                    c = br.read();
+                }
+                if(c == -1){
+                    return null;
+                }
+                while (c >= '0' && c <= '9') {
+                    x = x * 10 + (c - '0');
+                    c = br.read();
+                }
+                LONG_ARRAY[size++] = x * f;
+                if(c == '\n' || c == -1) {
+                    break;
+                }
+            }catch(Exception E){
+                return null;
+            }
+        }
+        if(size == 0) {
+            return null;
+        }
+        long[] temp = new long[size];
+        System.arraycopy(LONG_ARRAY,0,temp,0,size);
+        return temp;
+    }
+
+    public static String[] STRING_ARRAY = null;
+    public static String[] readStringArray(){
+        if( STRING_ARRAY == null) {
+            STRING_ARRAY = new String[100001];
+        }
+        int size = 0;
+        while(true) {
+            try{
+                if (CHAR_ARRAY == null) {
+                    CHAR_ARRAY = new char[MAX_STRING_LENGTH];
+                }
+                int x = br.read();
+                if(x == -1){
+                    return null;
+                }
+                while (ignore(x)) {
+                    x = br.read();
+                }
+                if(x == -1){
+                    return null;
+                }
+                int currentSize = 0;
+                while (x != ' ' &&  x != ',' && !ignore(x)) {
+                    CHAR_ARRAY[currentSize++] = (char) x;
+                    x = br.read();
+                }
+                STRING_ARRAY[size++] = new String(CHAR_ARRAY,0,currentSize);
+                if(x == '\n' || x == -1) {
+                    break;
+                }
+            }catch(Exception E){
+                return null;
+            }
+        }
+        if(size == 0) {
+            return null;
+        }
+        String[] temp = new String[size];
+        System.arraycopy(STRING_ARRAY,0,temp,0,size);
+        return temp;
+    }
+
     public static void pln(Object obj) {
         ptr.println(obj);
     }
@@ -146,6 +253,11 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     public static void print(Object obj) {
         ptr.print(obj);
     }
+
+    public static void printf(String format,Object ...obj) {
+        ptr.printf(format,obj);
+    }
+
 
     public static void close() {
         try {
@@ -165,12 +277,40 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
         }
     }
 
-// --------------------------------------------string-----------------------------------------------------------
+   // --------------------------------------------string-----------------------------------------------------------
 
     // MAX string SK
     public static int MAX_STRING_LENGTH = (int) 1e5 + 1;
 
-    public static char[] STRING_ARRAY = null;
+    public static char[] CHAR_ARRAY = null;
+
+    public static char[] readCharArray(boolean line){
+       try {
+            if (CHAR_ARRAY == null) {
+                CHAR_ARRAY = new char[MAX_STRING_LENGTH];
+            }
+            int x = br.read();
+            if (x == -1) {
+                return null;
+            }
+            while (ignore(x)) {
+                x = br.read();
+            }
+            int currentSize = 0;
+            while (line ? (x == ' ' || (x == ',') || !ignore(x)) : (x != ' ' && !ignore(x))) {
+                CHAR_ARRAY[currentSize++] = (char) x;
+                x = br.read();
+            }
+            if(currentSize == 0 && x == -1){
+                return null;
+            }
+            char[] temp = new char[currentSize];
+            System.arraycopy(CHAR_ARRAY,0,temp,0,currentSize);
+            return temp;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public static String readLine() {
         return readString(true);
@@ -181,27 +321,8 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
     public static String readString(boolean line) {
-        try {
-            if (STRING_ARRAY == null) {
-                STRING_ARRAY = new char[MAX_STRING_LENGTH];
-            }
-            int x = br.read();
-            if (x == -1) {
-                System.err.println("No Any Input !");
-                return "";
-            }
-            while (ignore(x)) {
-                x = br.read();
-            }
-            int currentSize = 0;
-            while (line ? (x == ' ' || (x == ',') || !ignore(x)) : (x != ' ' && !ignore(x))) {
-                STRING_ARRAY[currentSize++] = (char) x;
-                x = br.read();
-            }
-            return new String(STRING_ARRAY, 0, currentSize);
-        } catch (Exception e) {
-            return "";
-        }
+       char[] temp = readCharArray(line);
+       return temp == null ? null : new String(temp);
     }
 
     public static boolean ignore(int c) {
@@ -225,8 +346,8 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
 }
 ]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>fiof</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.java</scope>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>fiof</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.java</scope>
 </snippet>
