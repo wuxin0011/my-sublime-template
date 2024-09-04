@@ -139,7 +139,7 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
     public static void pln(Object obj) {
-        ptr.println(obj);
+         print(obj+"\n");
     }
 
     public static void print(Object obj) {
