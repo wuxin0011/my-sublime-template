@@ -1,5 +1,5 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 
 import java.io.*;
 import java.util.*;
@@ -7,16 +7,17 @@ import java.util.*;
 public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
 
-    static int MAXN = (int) 1e6 + 1;
-
+    static int inf = Integer.MAX_VALUE;
+    static int MAXN = (int) 1e6 + 10;
     // static int[] a = new int[MAXN];
-    // static String[] a = new String[MAXN];
-
 
     public static void solve() {
 
-       
+
+        
     }
+
+
 
     public static void main(String[] args) {
         int t = 1;
@@ -93,7 +94,7 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
         print("]\n");
     }
 
-    public static final String DEFAULT_FILE_NAME = "in.txt"; // default read file
+    public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
     public static final boolean DELETE_CLOSE = false; // auto close ?
     public static BufferedInputStream br = null;
     public static PrintWriter ptr = null;
@@ -162,9 +163,10 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
 
     public static long[] LONG_ARRAY = null;
+    public static final int MAX_LONG_LENGTH = (int) 1e6 + 10;
     public static long[] readLongArray(){
         if( LONG_ARRAY == null) {
-            LONG_ARRAY = new long[100001];
+            LONG_ARRAY = new long[MAX_LONG_LENGTH];
         }
         int size = 0;
         while(true) {
@@ -205,9 +207,10 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
     public static String[] STRING_ARRAY = null;
+    public static final int MAX_STRING_LENGTH = (int)1e6 + 10;
     public static String[] readStringArray(){
-        if( STRING_ARRAY == null) {
-            STRING_ARRAY = new String[100001];
+        if(STRING_ARRAY == null) {
+            STRING_ARRAY = new String[MAX_STRING_LENGTH];
         }
         int size = 0;
         while(true) {
@@ -281,14 +284,14 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
    // --------------------------------------------string-----------------------------------------------------------
 
     // MAX string SK
-    public static int MAX_STRING_LENGTH = (int) 1e5 + 1;
+    public static int MAX_CHAR_LENGTH = (int) 1e6 + 10;
 
     public static char[] CHAR_ARRAY = null;
 
     public static char[] readCharArray(boolean line){
        try {
             if (CHAR_ARRAY == null) {
-                CHAR_ARRAY = new char[MAX_STRING_LENGTH];
+                CHAR_ARRAY = new char[MAX_CHAR_LENGTH];
             }
             int x = br.read();
             if (x == -1) {
@@ -344,11 +347,10 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     public static float readFloat() {
         return Float.parseFloat(readString());
     }
-
 }
 ]]></content>
-    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-    <tabTrigger>fiof</tabTrigger>
-    <!-- Optional: Set a scope to limit where the snippet will trigger -->
-    <scope>source.java</scope>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>fiof</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
 </snippet>

@@ -8,6 +8,7 @@ import java.util.*;
 public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
     static int MAXN = (int) 1e6 + 1;
+    static int inf = Integer.MAX_VALUE;
 
     public static void solve() {
 
@@ -59,36 +60,36 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
     static void printArray(int[] arr, int st, int end) {
-        System.out.print("[");
+        print("[");
         for (int i = st; i < end; i++) {
-            System.out.print(arr[i]);
+            print(arr[i]);
             if (i != end - 1) {
-                System.out.print(", ");
+                print(", ");
             }
         }
-        System.out.print("]\n");
+        print("]\n");
     }
 
     static void printArray(long[] arr, int st, int end) {
-        System.out.print("[");
+        print("[");
         for (int i = st; i < end; i++) {
-            System.out.print(arr[i]);
+            print(arr[i]);
             if (i != end - 1) {
-                System.out.print(", ");
+                print(", ");
             }
         }
-        System.out.print("]\n");
+        print("]\n");
     }
 
     static void printArray(int[][] arr, int rowStart, int rowEnd, int colStart, int colEnd) {
-        System.out.print("[\n");
+        print("[\n");
         for (int i = rowStart; i < rowEnd; i++) {
             printArray(arr[i], colStart, colEnd);
         }
-        System.out.print("]\n");
+        print("]\n");
     }
 
-    public static final String DEFAULT_FILE_NAME = "in.txt"; // default read file
+    public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
     public static final boolean DELETE_CLOSE = false; // auto close ?
     public static InputStream br = null;
     public static PrintWriter ptr = null;
@@ -139,7 +140,8 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
     public static void pln(Object obj) {
-         print(obj+"\n");
+        print(obj);
+        print("\n");
     }
 
     public static void print(Object obj) {
