@@ -1,10 +1,8 @@
-<snippet>
-	<content><![CDATA[
-
 import java.io.*;
 import java.util.*;
 
-public class ${TM_FILENAME/(\w+)\.java/\1/g} { 
+
+public class Main { 
 
     static int MAXN = (int) 1e6 + 1;
     static int inf = Integer.MAX_VALUE;
@@ -12,7 +10,7 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     // static int[] a = new int[MAXN];
     // static String[] a = new String[MAXN];
     public static void solve() {
-       
+       System.out.println(io.read());
     }
 
 
@@ -29,7 +27,7 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
     static FastIO io = null;
     public static class FastIO {
-        public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
+        public static final String DEFAULT_FILE_NAME = "../in/Main/in.txt"; // default read file
         public static final boolean DELETE_CLOSE = false; // auto close ?
         public BufferedInputStream br = null;
         public PrintWriter ptr = null;
@@ -313,9 +311,3 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
     }
 
 }
-]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>fastio</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.java</scope>
-</snippet>
