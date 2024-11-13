@@ -1,5 +1,6 @@
-
 */*.exe
+bin/*
+
 
 !bin
 !in/*
@@ -8,4 +9,4 @@
 !template/*
 
 
-bin/*.class
+ 
