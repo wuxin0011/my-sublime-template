@@ -8,4 +8,4 @@
 !template/*
 
 
-bin/
+bin/*.class
