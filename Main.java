@@ -10,14 +10,19 @@ public class Main {
     // static int[] a = new int[MAXN];
     // static String[] a = new String[MAXN];
     public static void solve() {
-       System.out.println(io.read());
+      int n = io.read();
+      int[] a = new int[n];
+      for(int i = 0;i < n;i++) {
+         a[i] = io.read();
+      }
+      io.printArray(a,0,a.length);
     }
 
 
     public static void main(String[] args) {
         io = new FastIO();
         int t = 1;
-        // t = io.read();
+        t = io.read();
         while (t > 0) {
             solve();
             t--;
