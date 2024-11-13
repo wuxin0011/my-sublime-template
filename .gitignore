@@ -1,7 +1,6 @@
 */*.class
 */*.exe
 
-!bin
 !in/*
 !out/*
 !package/*
