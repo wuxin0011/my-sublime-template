@@ -1,8 +1,11 @@
- */*.class
- */*.exe
+
 !bin
 !bin/*
 !in/*
 !out/*
 !package/*
 !template/*
+
+
+ */*.class
+ */*.exe
