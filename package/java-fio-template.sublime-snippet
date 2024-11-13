@@ -7,8 +7,10 @@ import java.util.*;
 
 public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
+
     static int MAXN = (int) 1e6 + 1;
-    static int inf = Integer.MAX_VALUE;
+    static int MOD7 = (int) 1e9 + 7,MOD8 =  80112002,MOD9 = 998244353,inf = Integer.MAX_VALUE;
+    static int MOD  =  (int) MOD9;
 
     public static void solve() {
 
@@ -23,6 +25,55 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
         }
         close();
     }
+
+
+    public static void dbg(Object ...args) {
+        String str = "";
+        str += "{ ";
+        for(int i = 0 ;i < args.length;i++) {
+            str += String.valueOf(args[i]);
+            if(i < args.length - 1) {
+                str += ", ";
+            }
+        }
+        str += " }";
+        pln(str);
+    }
+
+
+
+    public static long mins(long ...args){
+        long ans = args[0];
+        for(long x : args) {
+            if(x < ans) ans = x;
+        }
+        return ans;
+    }
+
+    public static int mins(int ...args){
+        int ans = args[0];
+        for(int x : args) {
+            if(x < ans) ans = x;
+        }
+        return ans;
+    }
+
+    public static int maxs(int ...args){
+        int ans = args[0];
+        for(int x : args) {
+            if(x > ans) ans = x;
+        }
+        return ans;
+    }
+
+    public static long maxs(long ...args){
+        long ans = args[0];
+        for(long x : args) {
+            if(x > ans) ans = x;
+        }
+        return ans;
+    }
+
 
 
     public static int lowerBound(int[] array, int size, int target) {
@@ -146,6 +197,10 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
     public static void print(Object obj) {
         ptr.print(obj);
+    }
+
+    public static void printf(String format,Object ...obj) {
+        ptr.printf(format,obj);
     }
 
     public static void close() {

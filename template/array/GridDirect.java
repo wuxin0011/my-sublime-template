@@ -4,7 +4,7 @@ package template.array;
  * @author: wuxin0011
  * @Description: 网格图方向
  */
-public class Direct {
+public class GridDirect {
     // 八个方向
     static class A {
 

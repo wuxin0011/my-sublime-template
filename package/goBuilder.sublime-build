@@ -23,6 +23,11 @@
             // but you can't input anything to your progam
             "name": "Run in Sublime",
             "shell_cmd": "go run ${file_name}"
-        }
+        },
+         {
+            // 仅仅测试输入
+            "name": "Run in Sublime and input",
+            "shell_cmd": "go run ${file_name} < \"./in/golang/${file_base_name}.txt\" "
+        },
     ]
 }

@@ -1,7 +1,7 @@
 {
     // Windows 
     //  "shell_cmd": "javac  -d ${file_path}/../bin/  -sourcepath ${file}  ",
-    "shell_cmd": "javac ${file} -d bin -encoding utf-8 && cd bin && java ${file_base_name} ",
+    "shell_cmd": "javac ${file} -d bin -encoding utf-8 && cd bin && java  ${file_base_name} ",
     // check the file name using regex
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
     // set the encoding to utf-8

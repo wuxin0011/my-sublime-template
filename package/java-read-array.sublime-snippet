@@ -1,0 +1,108 @@
+<snippet>
+	<content><![CDATA[
+    public static int[] readIntArray(){
+         long[] temp = readLongArray();
+         if(temp == null) {
+            return null;
+         }
+         int[] ints = new int[temp.length];
+         for(int i = 0;i < temp.length;i++) {
+            if(temp[i] < Integer.MIN_VALUE || temp[i] > Integer.MAX_VALUE){
+                throw new RuntimeException("overflow int type");
+            }
+            ints[i] = (int)temp[i];
+         }
+         return ints;
+    }
+
+
+    public static long[] LONG_ARRAY = null;
+    public static long[] readLongArray(){
+        if( LONG_ARRAY == null) {
+            LONG_ARRAY = new long[100001];
+        }
+        int size = 0;
+        while(true) {
+            try{
+                int f = 1;
+                long x = 0;
+                int c = br.read();
+                if(c == -1) {
+                    break;
+                }
+                while (c < '0' || c > '9') {
+                    if (c == '-') {
+                        f = -1;
+                    }
+                    c = br.read();
+                }
+                if(c == -1){
+                    return null;
+                }
+                while (c >= '0' && c <= '9') {
+                    x = x * 10 + (c - '0');
+                    c = br.read();
+                }
+                LONG_ARRAY[size++] = x * f;
+                if(c == '\n' || c == -1) {
+                    break;
+                }
+            }catch(Exception E){
+                return null;
+            }
+        }
+        if(size == 0) {
+            return null;
+        }
+        long[] temp = new long[size];
+        System.arraycopy(LONG_ARRAY,0,temp,0,size);
+        return temp;
+    }
+
+    public static String[] STRING_ARRAY = null;
+    public static String[] readStringArray(){
+        if( STRING_ARRAY == null) {
+            STRING_ARRAY = new String[100001];
+        }
+        int size = 0;
+        while(true) {
+            try{
+                if (CHAR_ARRAY == null) {
+                    CHAR_ARRAY = new char[MAX_STRING_LENGTH];
+                }
+                int x = br.read();
+                if(x == -1){
+                    return null;
+                }
+                while (ignore(x)) {
+                    x = br.read();
+                }
+                if(x == -1){
+                    return null;
+                }
+                int currentSize = 0;
+                while (x != ' ' &&  x != ',' && !ignore(x)) {
+                    CHAR_ARRAY[currentSize++] = (char) x;
+                    x = br.read();
+                }
+                STRING_ARRAY[size++] = new String(CHAR_ARRAY,0,currentSize);
+                if(x == '\n' || x == -1) {
+                    break;
+                }
+            }catch(Exception E){
+                return null;
+            }
+        }
+        if(size == 0) {
+            return null;
+        }
+        String[] temp = new String[size];
+        System.arraycopy(STRING_ARRAY,0,temp,0,size);
+        return temp;
+    }
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>jioarray</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

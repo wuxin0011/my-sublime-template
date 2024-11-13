@@ -1,8 +1,8 @@
 {
 	"auto_complete": true,
 	"auto_match_enabled": true,
-	"font_size": 11,
-	"theme": "auto",
+	"font_size": 9,
+	"theme": "Default Dark.sublime-theme",
 	"update_check":false,
 	"color_scheme": "Monokai.sublime-color-scheme",
 	"ignored_packages":
