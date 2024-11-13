@@ -1,4 +1,4 @@
-bin/
+
 */*.exe
 
 !bin
@@ -6,3 +6,6 @@ bin/
 !out/*
 !package/*
 !template/*
+
+
+bin/
