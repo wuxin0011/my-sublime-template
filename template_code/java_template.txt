@@ -1,0 +1,118 @@
+
+import java.io.*;
+import java.util.*;
+
+
+
+/**
+ * @time {create_time}
+ * @author {create_author}
+ * @url {create_url}
+*/
+
+public class Template {
+
+
+    static int MAXN = (int) 1e6 + 1;
+    static int MOD7 = (int) 1e9 + 7,MOD8 =  80112002,MOD9 = 998244353,inf = Integer.MAX_VALUE;
+    static int MOD  =  (int) MOD9;
+
+    public static void solve() {
+
+    	
+    }
+
+    public static void main(String[] args) {
+        int t = 1;
+        t = read();
+        while (t > 0) {
+            solve();
+            t--;
+        }
+        close();
+    }
+
+
+    public static final String DEFAULT_FILE_NAME = "../in/Template /in.txt"; // default read file
+    public static final boolean DELETE_CLOSE = false; // auto close ?
+    public static InputStream br = null;
+    public static PrintWriter ptr = null;
+
+    static {
+        try {
+            File file = new File(DEFAULT_FILE_NAME);
+            br = file.exists() ? new BufferedInputStream(new FileInputStream(file)) : br;
+        } catch (Exception e) {
+
+        }
+        initIO(false);
+    }
+
+    public static void initIO(boolean flushIO) {
+        br = flushIO || br == null ? new BufferedInputStream(System.in) : br;
+        ptr = flushIO || ptr == null ? new PrintWriter(new BufferedOutputStream(System.out)) : ptr;
+    }
+
+    public static int read() {
+        long x = readLong();
+        if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE) {
+            throw new RuntimeException("overflow int type");
+        }
+        return (int) x;
+    }
+
+    static long readLong() {
+        try {
+            int c = br.read();
+            int f = 1;
+            long x = 0;
+            while (c < '0' || c > '9') {
+                if (c == '-') {
+                    f = -1;
+                }
+                c = br.read();
+            }
+            while (c >= '0' && c <= '9') {
+                x = x * 10 + (c - '0');
+                c = br.read();
+            }
+            return x * f;
+        } catch (IOException e) {
+            System.err.println("read Error,place check your input is number !");
+            return -1;
+        }
+    }
+
+    public static void pln(Object obj) {
+        print(obj);
+        print("\n");
+    }
+
+    public static void print(Object obj) {
+        ptr.print(obj);
+    }
+
+    public static void printf(String format,Object ...obj) {
+        ptr.printf(format,obj);
+    }
+
+    public static void close() {
+        try {
+            if (br != null)
+                br.close();
+
+            if (ptr != null) {
+                ptr.flush();
+                ptr.close();
+            }
+            if (DELETE_CLOSE) {
+                br = null;
+                ptr = null;
+            }
+        } catch (Exception ignore) {
+
+        }
+    }
+
+}
+

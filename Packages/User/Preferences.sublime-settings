@@ -10,7 +10,7 @@
 		"Vintage",
 	],
 	"font_face": "Fira Code",
-	"index_files": true,
+	"index_files": false,
 	"highlight_line":true,
 	"font_options": ["no_italic"],
 }

@@ -1,13 +1,13 @@
+
 <snippet>
 	<content><![CDATA[
 #include<bits/stdc++.h>
 using namespace std;
+using i64 = long long;
 
 void solve() {
     // todo...
 }
-
-
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -22,8 +22,7 @@ int main() {
 }
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>cio</tabTrigger>
+	<tabTrigger>cppiosm</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<!-- <scope>source.cpp</scope> -->
 	<scope>source.cpp</scope>
 </snippet>

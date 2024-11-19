@@ -5,8 +5,8 @@
 	],
 	"installed_packages":
 	[
-		"Kotlin",
-		"LSP-kotlin",
+		"CppFastOlympicCoding",
+		"CompetitiveProgrammingParser",
 		"Package Control",
 	],
 }
