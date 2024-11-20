@@ -17,7 +17,7 @@
             "name": "Run In Terminus",
             "target": "terminus_exec",
             "cancel": "terminus_cancel_build",
-            "shell_cmd": "start cmd /c IF NOT EXIST bin MKDIR bin && javac -d bin ${file} && cd bin && start cmd /K java ${file_base_name}"
+            "shell_cmd": "start cmd /c IF NOT EXIST bin MKDIR bin && javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && start cmd /K java ${file_base_name}"
 
         },
         {
@@ -25,7 +25,7 @@
             // you can type something in CMD then your progam can get its inputs
             // [Recommanded]
             "name": "Run in CMD",
-            "shell_cmd": "start cmd /c IF NOT EXIST bin MKDIR bin && javac -d bin ${file} && cd bin && start cmd /K java ${file_base_name}"
+            "shell_cmd": "start cmd /c IF NOT EXIST bin MKDIR bin && javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && start cmd /K java ${file_base_name}"
         },
         {
             // build and run in sublime
