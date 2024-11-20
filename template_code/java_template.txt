@@ -33,7 +33,7 @@ public class Template {
     }
 
 
-    public static final String DEFAULT_FILE_NAME = "../in/Template /in.txt"; // default read file
+    public static final String DEFAULT_FILE_NAME = "../in/Template/in.txt"; // default read file
     public static final boolean DELETE_CLOSE = false; // auto close ?
     public static InputStream br = null;
     public static PrintWriter ptr = null;
