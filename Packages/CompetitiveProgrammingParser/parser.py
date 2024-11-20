@@ -11,11 +11,19 @@ settings, user_settings = None, None
 contest_name, contest_dir, working_dir, error, parse_in_view_file, view_file_name, sep = None, None, None, False, False, None, False
 problems = []
 
+
+
+
 # close create info ?
 close_message = 0
+debug_mode = 0
+
 create_time = None
 create_author = None
 create_url = None
+globa_test_file = None
+globa_targer_file = None
+
 
 
 def reset():
@@ -121,7 +129,7 @@ def create_lang_template(filename, full_file_name):
         template_file = template_file.replace(' ', '')
         support_list = GetSettings("support_list") if GetSettings("support_list") else ("cpp","java","c","go","py","js","c#")
         # print('template_file',template_file,'template_content',template_content)
-        show_msg('parse template ... ' + template_file)
+        # show_msg('parse template ... ' + template_file)
 
         is_replace_file_name = False
         if ext_name == 'java':
@@ -131,7 +139,7 @@ def create_lang_template(filename, full_file_name):
         try:
 
             #  template template content
-            if template_file:
+            if template_file and os.path.exists(template_file):
                 f = open(template_file, 'r')
                 template_content = f.read()
                 if template_content:
@@ -183,21 +191,34 @@ def parse_testcases(tests, problem, action):
 
 
     # my custom template
-    create_lang_template(origin_name, filename)
+    try:
+        global globa_targer_file,globa_test_file
+        globa_targer_file = filename
+        create_lang_template(origin_name, filename)
 
-    testcases = []
-    tests = tests["tests"]
-    for test in tests:
-        testcase = {
-            "test": test["input"],
-            "correct_answers": [test["output"].strip()]
-        }
-        testcases.append(testcase)
+    except:
+        pass
 
-    with open(filename + tests_file_suffix, "w") as f:
-        f.write(json.dumps(testcases))
-    global successful_problems
-    successful_problems += 1
+    try:
+        testcases = []
+        tests = tests["tests"]
+        for test in tests:
+            testcase = {
+                "test": test["input"],
+                "correct_answers": [test["output"].strip()]
+            }
+            testcases.append(testcase)
+        globa_test_file = filename + tests_file_suffix
+        if len(testcase) > 0:
+            show_msg('✔️ parse testcase success : ' + json.dumps(testcases))
+            
+        with open(filename + tests_file_suffix, "w") as f:
+            f.write(json.dumps(testcases))
+        global successful_problems
+        successful_problems += 1
+
+    except Exception as e:
+        show_msg('❌ parse testcase error')
 
 
 def check_page_correctness(action):
@@ -209,6 +230,8 @@ def check_page_correctness(action):
 
 def get_problem_name(tests, oj):
     global contest_name
+    if debug_mode:
+        show_msg('get_problem_name ...')
     problem = tests["name"]
     if contest_name == None:
         contest_name = tests["group"].split('-', 1)[-1].strip()
@@ -218,9 +241,16 @@ def get_problem_name(tests, oj):
     elif oj == "Yandex":
         problem = tests["name"].split('.')[0]
     elif oj == 'Codeforces':
-        problem = tests["url"].split('contest')[1]
-        problem = problem.replace('problem','').replace('contest','').replace('//','/').replace('/','_')
-        problem = str(problem).upper()
+        if 'problem/' in tests['url']:
+            problem = tests["url"].split('problem/')[1]
+            problem = problem.replace('problem','').replace('contest','').replace('//','/').replace('/','_')
+            problem = str(problem).upper()
+            if problem[0].isdigit():
+                problem = '_' + problem
+            if debug_mode:
+                show_msg("problem name : " + problem)
+        else:
+            problem = tests["name"].split('.')[0]
     # elif oj == "Codeforces" or oj == "Yandex":
     #     problem = tests["name"].split('.')[0]
     elif oj == "AtCoder":
@@ -235,17 +265,16 @@ def handle(tests, action):
     global totalProblems, problems_parsed, error
     problems_parsed += 1
     totalProblems = tests["batch"]['size']
-    show_msg(tests)
+    show_msg('🥰 parse total Info ...  ')
+    if GetSettings("print_total_info"):
+        show_msg(json.dumps(tests))
 
     try:
         check_page_correctness(action)
     except Exception as e:
         raise Exception(e)
-
     oj = tests["group"].split('-')[0].strip()
-
     problem = get_problem_name(tests, oj)
-
     cnt = problems.count(problem)
     if cnt == 5:
         error = True
@@ -269,7 +298,6 @@ def handle(tests, action):
 
     try:
         parse_testcases(tests, problem, action)
-        show_msg("✔️ Problem " + problem + " (" + str(problems_parsed) + "/" + str(totalProblems) + ")" + " success")
     except Exception as e:
         show_msg("❌ Problem " + problem + " (" + str(problems_parsed) + "/" + str(totalProblems) + ")" + " fail")
 
@@ -279,6 +307,10 @@ def MakeHandlerClass(action):
         def do_POST(self):
             try:
                 handle(json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode('utf8')), action)
+                if globa_test_file:
+                    show_msg('✔️ tescase save location:' + globa_test_file)
+                if globa_targer_file:
+                    show_msg('✔️ file   save  location:' + globa_targer_file)
             except Exception as e:
                 show_msg("❌ error: " + str(e))
             threading.Thread(target=self.server.shutdown, daemon=True).start()
