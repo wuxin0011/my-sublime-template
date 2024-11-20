@@ -245,16 +245,16 @@ def get_problem_name(tests, oj):
             problem = tests["url"].split('problem/')[1]
             problem = problem.replace('problem','').replace('contest','').replace('//','/').replace('/','_')
             problem = str(problem).upper()
-            if problem[0].isdigit():
-                problem = '_' + problem
-            if debug_mode:
-                show_msg("problem name : " + problem)
         else:
             problem = tests["name"].split('.')[0]
     # elif oj == "Codeforces" or oj == "Yandex":
     #     problem = tests["name"].split('.')[0]
     elif oj == "AtCoder":
         problem = tests["name"].split(' ')[0]
+    else:
+        problem = tests["url"].split('/')[-1]
+    if problem[0].isdigit():
+            problem = '_' + problem
     problem = problem.replace(" ", "_")
     global create_url
     create_url = tests["url"]
