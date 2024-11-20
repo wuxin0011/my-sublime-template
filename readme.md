@@ -9,7 +9,7 @@
 [Packages](./Packages) 中包含一下内容
 
 - CppFastOlympicCoding 修改了一下button按钮样式
-  - 主要是修改了这两个文件 [test_styles](/Packages\CppFastOlympicCoding\Highlight\test_styles.css) 和 [test_config.html](/Packages\CppFastOlympicCoding\Highlight\test_config.html)
+  - 主要是修改了这两个文件 [test_styles](/Packages/CppFastOlympicCoding/Highlight/test_styles.css) 和 [test_config.html](/Packages/CppFastOlympicCoding/Highlight/test_config.html)
 - CompetitiveProgrammingParser 基于 [CompetitiveProgrammingParser](https://github.com/codeuniverse101/CompetitiveProgrammingParser) 修改，补充了模板方式 
   - "template_dir" 指定模板存放目录
   - "lang_template_suffix" 模板后缀 默认是 "_template.txt" 如果选择 cpp 会拼接成 `template_dir + lang_extension +  lang_template_suffix  `  没有逗号
