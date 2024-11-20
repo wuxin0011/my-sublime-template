@@ -24,7 +24,7 @@ public class Template {
 
     public static void main(String[] args) {
         int t = 1;
-        t = read();
+        // t = read();
         while (t > 0) {
             solve();
             t--;
