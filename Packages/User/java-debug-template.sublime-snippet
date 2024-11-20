@@ -26,7 +26,6 @@
         str += " }";
         pln(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
     }
-    
 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

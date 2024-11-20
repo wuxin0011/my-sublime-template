@@ -1,6 +1,6 @@
 {
 	"use_default_directory": false,
-	"lang_extension": ".java",
+	"lang_extension": ".cpp",
     "template_dir":"D:\\template_code",
     "lang_template_suffix": "_template.txt",
     "override_file":false,
@@ -8,70 +8,133 @@
     "support_list":["cpp","java","c","go","py","js","c#"],
     "create_author":"wuxin0011",
 	  "directory" : {
-	 	"default": "D:\\Contests",
-	 	"A2 Online Judge" : "D:\\Contests\\A2",
+	 	 "default": "D:\\Contests",
+	 	 "A2 Online Judge" : "D:\\Contests\\A2",
+
         "ACMP" : "D:\\Contests\\ACMP",
+
         "AcWing" : "D:\\Contests\\AcWing",
+
         "Aizu Online Judge" : "D:\\Contests\\Aizu",
+
         "Anarchy Golf" : "D:\\Contests\\Anarchy",
+
         "AtCoder" : "D:\\Contests\\AtCoder",
+
         "Baekjoon Online Judge" : "D:\\Contests\\Baekjoon",
+
         "beecrowd" : "D:\\Contests\\beecrowd",
+
         "Bloomberg CodeCon" : "D:\\Contests\\Bloomberg",
+
         "BUCTOJ" : "D:\\Contests\\BUCTOJ",
+
         "CodeChef" : "D:\\Contests\\CodeChef",
+
         "CodeDrills" : "D:\\Contests\\CodeDrills",
+
         "Codeforces" : "D:\\Contests\\Codeforces",
+
         "CodeMarshal" : "D:\\Contests\\CodeMarshal",
+
         "COJ" : "D:\\Contests\\COJ",
+
         "Contest Hunter" : "D:\\Contests\\Hunter",
+
         "CS Academy" : "D:\\Contests\\Academy",
+
         "CSES" : "D:\\Contests\\CSES",
+
         "CSU-ACM Online Judge" : "D:\\Contests\\CSU-ACM",
+
         "DevSkill" : "D:\\Contests\\DevSkill",
+
         "DMOJ" : "D:\\Contests\\DMOJ",
+
         "Eolymp" : "D:\\Contests\\Eolymp",
+
         "ECNU Online Judge" : "D:\\Contests\\ECNU",
+
         "Facebook Coding Competitions" : "D:\\Contests\\Facebook",
+
         "FZU Online Judge" : "D:\\Contests\\FZU",
+
         "Google Coding Competitions" : "D:\\Contests\\Google",
+
         "HackerEarth" : "D:\\Contests\\HackerEarth",
+
         "HackerRank" : "D:\\Contests\\HackerRank",
+
         "HDOJ" : "D:\\Contests\\HDOJ",
+
         "HIT Online Judge" : "D:\\Contests\\HIT",
+
         "hihoCoder" : "D:\\Contests\\hihoCoder",
+
         "Hrbust Online Judge" : "D:\\Contests\\Hrbust",
+
         "Hydro" : "D:\\Contests\\Hydro",
+
         "ICPC Live Archive" : "D:\\Contests\\ICPC-Archive",
+
         "Jutge" : "D:\\Contests\\Jutge",
+
         "Kattis" : "D:\\Contests\\Kattis",
+
         "Library Checker" : "D:\\Contests\\Library",
+
         "LibreOJ" : "D:\\Contests\\LibreOJ",
+
         "LightOJ" : "D:\\Contests\\LightOJ",
+
         "Luogu" : "D:\\Contests\\Luogu",
+
         "mrJudge" : "D:\\Contests\\mrJudge",
+
         "MSK Informatics" : "D:\\Contests\\MSK",
+
         "Neps Academy" : "D:\\Contests\\Neps",
+
         "NOJ" : "D:\\Contests\\NOJ",
+
         "NowCoder" : "D:\\Contests\\NowCoder",
+
         "NYTD Online Judge" : "D:\\Contests\\NYTD",
+
         "omegaUp" : "D:\\Contests\\omegaUp",
+
         "Panda Online Judge" : "D:\\Contests\\Panda",
+
         "PEG Judge" : "D:\\Contests\\PEG",
+
         "POJ" : "D:\\Contests\\POJ",
+
         "QDUOJ" : "D:\\Contests\\QDUOJ",
+
         "SPOJ" : "D:\\Contests\\SPOJ",
+
         "SSOIER" : "D:\\Contests\\SSOIER",
+
         "Timus" : "D:\\Contests\\Timus",
+
         "TLX" : "D:\\Contests\\TLX",
+
         "Toph" : "D:\\Contests\\Toph",
+
         "UOJ" : "D:\\Contests\\UOJ",
+
         "USACO" : "D:\\Contests\\USACO",
+
         "USACO Training" : "D:\\Contests\\USACO",
+
         "UVa Online Judge" : "D:\\Contests\\UVa",
+
         "Virtual Judge" : "D:\\Contests\\Virtual",
+
         "Yandex" : "D:\\Contests\\Yandex",
+
         "XXM" : "D:\\Contests\\XXM",
+
         "yukicoder": "D:\\Contests\\yukicoder",
 	 }
 	

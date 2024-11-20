@@ -28,31 +28,17 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
 
     public static void dbg(Object ...args) {
-        boolean isDebug = true;
-        if(!isDebug){
-            return;
-        }
-        String argsStringIndex = "";
-        // argsStringIndex += "{ ";
-        // for(int i = 0;i < args.length;i++) {
-        //     argsStringIndex += i;
-        //     if(i != args.length-1) {
-        //         argsStringIndex +=",";
-        //     }
-        // }
-        // argsStringIndex += " }";
         String str = "";
         str += "{ ";
         for(int i = 0 ;i < args.length;i++) {
             str += String.valueOf(args[i]);
             if(i < args.length - 1) {
-                str += " ,";
+                str += ", ";
             }
         }
         str += " }";
-        pln(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
+        pln(str);
     }
-    
 
 
 
