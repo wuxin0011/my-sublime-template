@@ -16,6 +16,7 @@ problems = []
 
 # close create info ?
 close_message = 0
+close_log = False
 debug_mode = 0
 
 create_time = None
@@ -40,15 +41,14 @@ def plugin_loaded():
 
 
 def show_msg(msg):
-    if close_message:
-        return
-    global sep
-    if not sep:
-        sep = True
-        print(5 * '\n' + '------------------------------START------------------------------')
-    sublime.active_window().run_command('show_panel', {"panel": "console"})
-    time.sleep(1)
-    print(msg)
+    global close_log,sep
+    if not close_log:
+        if not sep:
+            sep = True
+            print(5 * '\n' + '------------------------------START------------------------------')
+        sublime.active_window().run_command('show_panel', {"panel": "console"})
+        time.sleep(1)
+        print(msg)
 
 
 def close_panel():
@@ -71,7 +71,7 @@ def GetSettings(key):
 
 
 def update_settings():
-    global settings, user_settings, tests_file_suffix
+    global settings, user_settings, tests_file_suffix,close_log
     settings = sublime.load_settings('CompetitiveProgrammingParser ({os}).sublime-settings'.format(
         os={'windows': 'Windows', 'linux': 'Linux', 'osx': 'OSX'}[sublime.platform().lower()])
     )
@@ -80,6 +80,8 @@ def update_settings():
         tests_file_suffix = GetSettings('tests_file_suffix')
     else:
         raise Exception('tests_file_suffix not found in settings file')
+    if GetSettings('close_log'):
+        close_log = GetSettings('close_log')
     print("CompetitiveProgrammingParser Settings loaded successfully")
 
 
