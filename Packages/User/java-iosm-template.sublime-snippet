@@ -26,6 +26,33 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
         close();
     }
 
+    public static void dbg(Object ...args) {
+        boolean isDebug = true;
+        if(!isDebug){
+            return;
+        }
+        String argsStringIndex = "";
+        // argsStringIndex += "{ ";
+        // for(int i = 0;i < args.length;i++) {
+        //     argsStringIndex += i;
+        //     if(i != args.length-1) {
+        //         argsStringIndex +=",";
+        //     }
+        // }
+        // argsStringIndex += " }";
+        String str = "";
+        str += "{ ";
+        for(int i = 0 ;i < args.length;i++) {
+            str += String.valueOf(args[i]);
+            if(i < args.length - 1) {
+                str += " ,";
+            }
+        }
+        str += " }";
+        pln(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
+    }
+    
+
 
     public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
     public static final boolean DELETE_CLOSE = false; // auto close ?
