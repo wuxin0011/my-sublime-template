@@ -95,13 +95,13 @@ def fetch_directory(oj, action):
         else:
             contest_dir = GetSettings('directory')[key]
     if not os.path.exists(contest_dir):
-        os.mkdir(contest_dir)
+        os.makedirs(contest_dir)
     working_dir = contest_dir
     if action == 'contest':
         working_dir = os.path.join(working_dir, contest_name)
         try:
             if not os.path.exists(working_dir):
-                os.mkdir(working_dir)
+                os.makedirs(working_dir)
         except Exception as e:
             error = True
             raise Exception(str(e) + '\nPlease update your CompetitiveProgrammingParser settings.')
