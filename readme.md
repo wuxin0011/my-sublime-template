@@ -59,6 +59,13 @@
 - 核心函数模式请使用 [_LCUtil](./_LCUtil.java) 
   - 如果需要查看完整版本请查阅[gitee](https://gitee.com/wuxin0011/LeetCode) or [github](https://github.com/wuxin0011/LeetCode) ,这个函数是这个中迁移过来的
 
+
+
+### cph 下载地址
+
+- [fixfore](https://addons.mozilla.org/zh-CN/firefox/addon/competitive-companion/)
+- [edge](https://github.com/jmerle/competitive-companion/releases/tag)
+
 ## 激活
 
 - [hexed(opens new window)](https://hexed.it/)
