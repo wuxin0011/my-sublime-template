@@ -1,3 +1,4 @@
 {
-	"tests_file_suffix" : "__tests"
+	"tests_file_suffix" : "__tests",
+	"close_sidebar": false
 }

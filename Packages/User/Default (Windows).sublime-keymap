@@ -1,3 +1,15 @@
 [
-	{ "keys": ["ctrl+d"], "command": "duplicate_line" }
+	{ "keys": ["ctrl+d"], "command": "duplicate_line" },
+    {    
+        "keys": ["ctrl+alt+c"], "command": "competitive_programming_parser_file",
+        "args": { "action": "contest"} 
+    },
+    {    
+        "keys": ["ctrl+alt+x"], "command": "competitive_programming_parser_file",
+        "args": { "action": "testcase"} 
+    },
+    {    
+        "keys": ["ctrl+alt+y"], "command": "competitive_programming_parser_file",
+        "args": { "action": "problem"} 
+    },
 ]

@@ -47,7 +47,7 @@ def show_msg(msg):
             sep = True
             print(5 * '\n' + '------------------------------START------------------------------')
         sublime.active_window().run_command('show_panel', {"panel": "console"})
-        time.sleep(1)
+        # time.sleep(1)
         print(msg)
 
 
@@ -96,15 +96,26 @@ def fetch_directory(oj, action):
             contest_dir = GetSettings('directory')[key]
     if not os.path.exists(contest_dir):
         os.makedirs(contest_dir)
+    show_msg('actions : ' + action)
     working_dir = contest_dir
     if action == 'contest':
         working_dir = os.path.join(working_dir, contest_name)
-        try:
-            if not os.path.exists(working_dir):
-                os.makedirs(working_dir)
-        except Exception as e:
-            error = True
-            raise Exception(str(e) + '\nPlease update your CompetitiveProgrammingParser settings.')
+    else:
+        if GetSettings('date_dir'):
+            pass
+            now = datetime.datetime.now()
+            year = str(now.year)
+            month = str(now.month).zfill(2)  
+            day = str(now.day).zfill(2)
+            working_dir =  os.path.join(working_dir,year)
+    try:
+        if not os.path.exists(working_dir):
+            os.makedirs(working_dir)
+    except Exception as e:
+        error = True
+        raise Exception(str(e) + '\nPlease update your CompetitiveProgrammingParser settings.')
+ 
+
 
     if GetSettings('open_in_new_window') and action == 'contest':
         os.system('subl -n \"' + working_dir + '\"')
@@ -132,7 +143,6 @@ def create_lang_template(filename, full_file_name):
         support_list = GetSettings("support_list") if GetSettings("support_list") else ("cpp","java","c","go","py","js","c#")
         # print('template_file',template_file,'template_content',template_content)
         # show_msg('parse template ... ' + template_file)
-
         is_replace_file_name = False
         if ext_name == 'java':
             is_replace_file_name = True
@@ -164,7 +174,6 @@ def create_lang_template(filename, full_file_name):
         except Exception as e:
             show_msg('❌ parse template error')
             print('error', e)
-
         if override or (not os.path.exists(full_file_name)):
             file = open(full_file_name, 'w')
             if template_content:
@@ -177,51 +186,56 @@ def create_lang_template(filename, full_file_name):
             file = open(full_file_name, 'w')
             file.close()
 
-
 # create file and testcases
 def parse_testcases(tests, problem, action):
+    global working_dir
     filename = problem + GetSettings('lang_extension')
     if parse_in_view_file:
         filename = view_file_name
+    o_name = filename
     origin_name = filename
-    filename = os.path.join(working_dir, filename)
+    if GetSettings('date_dir') and not os.path.isabs(filename):
+        now = datetime.datetime.now()
+        month = str(now.month).zfill(2) 
+        day = str(now.day).zfill(2) 
+        filename =  "_" + str(month) + "_" + str(day) + "_" + str(filename)
+        origin_name = filename
+    try:
+        filename = os.path.join(str(working_dir), str(filename))
+    except Exception as e:
+        origin_name = o_name
+        filename = os.path.join(str(working_dir), str(o_name))
 
-    # origin method
-    # if not os.path.exists(filename):
-    #     file = open(filename, 'w')
-    #     file.close()
-
-
-    # my custom template
     try:
         global globa_targer_file,globa_test_file
         globa_targer_file = filename
         create_lang_template(origin_name, filename)
-
-    except:
+    except Exception as e:
         pass
-
     try:
         testcases = []
-        tests = tests["tests"]
-        for test in tests:
-            testcase = {
-                "test": test["input"],
-                "correct_answers": [test["output"].strip()]
-            }
-            testcases.append(testcase)
-        globa_test_file = filename + tests_file_suffix
-        if len(testcase) > 0:
-            show_msg('✔️ parse testcase success : ' + json.dumps(testcases))
-            
-        with open(filename + tests_file_suffix, "w") as f:
-            f.write(json.dumps(testcases))
-        global successful_problems
-        successful_problems += 1
+        if "tests" in tests:
+            tests = tests["tests"]
+            for test in tests:
+                testcase = {
+                    "test": test["input"],
+                    "correct_answers": [test["output"].strip()]
+                }
+                testcases.append(testcase)
+            globa_test_file = filename + tests_file_suffix
+            if len(testcase) > 0:
+                show_msg('✔️ parse testcase success : ' + json.dumps(testcases))
+                
+            with open(filename + tests_file_suffix, "w") as f:
+                f.write(json.dumps(testcases))
+            global successful_problems
+            successful_problems += 1
+        else:
+            show_msg('❌ parse testcase error tests not exest')
 
     except Exception as e:
-        show_msg('❌ parse testcase error')
-
+        show_msg('❌ parse testcase error' + e)
+    
 
 def check_page_correctness(action):
     global error
@@ -232,8 +246,6 @@ def check_page_correctness(action):
 
 def get_problem_name(tests, oj):
     global contest_name
-    if debug_mode:
-        show_msg('get_problem_name ...')
     problem = tests["name"]
     if contest_name == None:
         contest_name = tests["group"].split('-', 1)[-1].strip()
@@ -255,7 +267,7 @@ def get_problem_name(tests, oj):
         problem = tests["name"].split(' ')[0]
     else:
         problem = tests["url"].split('/')[-1]
-    if problem[0].isdigit():
+    if problem[0].isdigit() and not GetSettings('date_dir'):
             problem = '_' + problem
     problem = problem.replace(" ", "_")
     global create_url
@@ -267,7 +279,7 @@ def handle(tests, action):
     global totalProblems, problems_parsed, error
     problems_parsed += 1
     totalProblems = tests["batch"]['size']
-    show_msg('🥰 parse total Info ...  ')
+    show_msg('start handler ... 🥰 ')
     if GetSettings("print_total_info"):
         show_msg(json.dumps(tests))
 
@@ -297,11 +309,10 @@ def handle(tests, action):
         except Exception as e:
             raise Exception(e)
         show_msg('parsing ' + action + "...")
-
     try:
         parse_testcases(tests, problem, action)
     except Exception as e:
-        show_msg("❌ Problem " + problem + " (" + str(problems_parsed) + "/" + str(totalProblems) + ")" + " fail")
+        show_msg("❌ Problem " + problem + " (" + str(problems_parsed) + "/" + str(totalProblems) + ")" + " fail : detail => " + e)
 
 
 def MakeHandlerClass(action):
@@ -310,9 +321,9 @@ def MakeHandlerClass(action):
             try:
                 handle(json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode('utf8')), action)
                 if globa_test_file:
-                    show_msg('✔️ tescase save location:' + globa_test_file)
+                    show_msg('✔️ testcase save location:' + globa_test_file +  "  👜")
                 if globa_targer_file:
-                    show_msg('✔️ file   save  location:' + globa_targer_file)
+                    show_msg('✔️ file   save   location:' + globa_targer_file + " 👜")
             except Exception as e:
                 show_msg("❌ error: " + str(e))
             threading.Thread(target=self.server.shutdown, daemon=True).start()
