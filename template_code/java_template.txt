@@ -11,6 +11,11 @@ import java.util.*;
 
 public class Template {
 
+
+    static int MAXN = (int) 1e6 + 1;
+    static int MOD7 = (int) 1e9 + 7,MOD8 =  80112002,MOD9 = 998244353,inf = Integer.MAX_VALUE;
+    static int MOD  =  (int) MOD9;
+
      public static class MainClass {
 
 
