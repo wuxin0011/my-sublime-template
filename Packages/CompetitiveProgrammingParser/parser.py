@@ -106,7 +106,7 @@ def fetch_directory(oj, action):
             year = str(now.year)
             month = str(now.month).zfill(2)  
             day = str(now.day).zfill(2)
-            working_dir =  os.path.join(working_dir,year)
+            working_dir =  os.path.join(working_dir,year,month)
     try:
         if not os.path.exists(working_dir):
             os.makedirs(working_dir)
