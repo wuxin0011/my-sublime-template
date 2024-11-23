@@ -1,6 +1,6 @@
 {
-    "use_default_directory": false,
-    "lang_extension": ".java",
+	"use_default_directory": false,
+	"lang_extension": ".java",
     "template_dir":"D:\\template_code",
     "lang_template_suffix": "_template.txt",
     "override_file":false,
@@ -8,9 +8,9 @@
     "date_dir":true,
     "support_list":["cpp","java","c","go","py","js","c#"],
     "create_author":"wuxin0011",
-      "directory" : {
-         "default": "D:\\Contests",
-         "A2 Online Judge" : "D:\\Contests\\A2",
+	  "directory" : {
+	 	 "default": "D:\\Contests",
+	 	 "A2 Online Judge" : "D:\\Contests\\A2",
 
         "ACMP" : "D:\\Contests\\ACMP",
 
@@ -137,6 +137,6 @@
         "XXM" : "D:\\Contests\\XXM",
 
         "yukicoder": "D:\\Contests\\yukicoder",
-     }
-    
+	 }
+	
 }

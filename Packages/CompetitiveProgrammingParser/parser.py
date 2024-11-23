@@ -17,7 +17,7 @@ problems = []
 # close create info ?
 close_message = 0
 close_log = False
-debug_mode = 0
+debug_mode = 1
 
 create_time = None
 create_author = None
@@ -96,7 +96,6 @@ def fetch_directory(oj, action):
             contest_dir = GetSettings('directory')[key]
     if not os.path.exists(contest_dir):
         os.makedirs(contest_dir)
-    show_msg('actions : ' + action)
     working_dir = contest_dir
     if action == 'contest':
         working_dir = os.path.join(working_dir, contest_name)

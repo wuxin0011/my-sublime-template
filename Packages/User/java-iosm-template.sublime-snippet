@@ -1,115 +1,154 @@
 <snippet>
 	<content><![CDATA[
 
-import java.io.*;
-import java.util.*;
+    import java.util.*;
+    import java.io.*;
 
 
-public class ${TM_FILENAME/(\w+)\.java/\1/g} {
+    public class ${TM_FILENAME/(\w+)\.java/\1/g} {
+
+        public static class MainClass {
 
 
-    static int MAXN = (int) 1e6 + 1;
-    static int MOD7 = (int) 1e9 + 7,MOD8 =  80112002,MOD9 = 998244353,inf = Integer.MAX_VALUE;
-    static int MOD  =  (int) MOD9;
+            void solve(){
+                // todo...
+            }
 
-    public static void solve() {
-
-    }
-
-    public static void main(String[] args) {
-        int t = 1;
-        // t = read();
-        while (t > 0) {
-            solve();
-            t--;
+                
         }
-        close();
-    }
 
 
-    public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
-    public static final boolean DELETE_CLOSE = false; // auto close ?
-    public static InputStream br = null;
-    public static PrintWriter ptr = null;
+        static IO io;
 
-    static {
-        try {
-            File file = new File(DEFAULT_FILE_NAME);
-            br = file.exists() ? new BufferedInputStream(new FileInputStream(file)) : br;
-        } catch (Exception e) {
-
+        public static void main(String[] args) {
+            io = new IO();
+            int t = 1;
+            // t = io.read();
+            for(;t > 0;t--) {
+                new MainClass().solve();
+            }
+            io.close();
         }
-        initIO(false);
-    }
 
-    public static void initIO(boolean flushIO) {
-        br = flushIO || br == null ? new BufferedInputStream(System.in) : br;
-        ptr = flushIO || ptr == null ? new PrintWriter(new BufferedOutputStream(System.out)) : ptr;
-    }
 
-    public static int read() {
-        long x = readLong();
-        if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE) {
-            throw new RuntimeException("overflow int type");
-        }
-        return (int) x;
-    }
+        public static class IO {
+            static int MAXN = (int) 1e6 + 1;
 
-    static long readLong() {
-        try {
-            int c = br.read();
-            int f = 1;
-            long x = 0;
-            while (c < '0' || c > '9') {
-                if (c == '-') {
-                    f = -1;
+            public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
+            public static final boolean DELETE_CLOSE = false; // auto close ?
+            public  BufferedInputStream br = null;
+            public  PrintWriter ptr = null;
+            public  boolean splitDOT = true; // if string contains ',' ,need split ?,default true
+
+
+            {
+                try {
+                    File file = new File(DEFAULT_FILE_NAME);
+                    br = file.exists() ? new BufferedInputStream(new FileInputStream(file)) : br;
+                } catch (Exception ignored) {
+
                 }
-                c = br.read();
+                initIO(false);
             }
-            while (c >= '0' && c <= '9') {
-                x = x * 10 + (c - '0');
-                c = br.read();
+
+            public  void initIO(boolean flushIO) {
+                br = flushIO || br == null ? new BufferedInputStream(System.in) : br;
+                ptr = flushIO || ptr == null ? new PrintWriter(new BufferedOutputStream(System.out)) : ptr;
             }
-            return x * f;
-        } catch (IOException e) {
-            System.err.println("read Error,place check your input is number !");
-            return -1;
+
+            public  int read() {
+                long x = readLong();
+                if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE) {
+                    throw new RuntimeException("overflow int type");
+                }
+                return (int) x;
+            }
+
+            public long readLong() {
+                try {
+                    int c = br.read();
+                    int f = 1;
+                    long x = 0;
+                    while (c < '0' || c > '9') {
+                        if (c == '-') {
+                            f = -1;
+                        }
+                        c = br.read();
+                    }
+                    while (c >= '0' && c <= '9') {
+                        x = x * 10 + (c - '0');
+                        c = br.read();
+                    }
+                    return x * f;
+                } catch (IOException e) {
+                    System.err.println("read Error,place check your input is number !");
+                    return -1;
+                }
+            }
+
+
+            boolean isDebug = true;
+
+            public  void dbg(Object ...args) {
+                if(!isDebug){
+                    return;
+                }
+                String argsStringIndex = "";
+                // argsStringIndex += "{ ";
+                // for(int i = 0;i < args.length;i++) {
+                //     argsStringIndex += i;
+                //     if(i != args.length-1) {
+                //         argsStringIndex +=",";
+                //     }
+                // }
+                // argsStringIndex += " }";
+                String str = "";
+                str += "{ ";
+                for(int i = 0 ;i < args.length;i++) {
+                    str += String.valueOf(args[i]);
+                    if(i < args.length - 1) {
+                        str += " ,";
+                    }
+                }
+                str += " }";
+                pln(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
+            }
+
+
+
+            public  void pln(Object obj) {
+                print(obj);
+                print("\n");
+            }
+
+            public  void print(Object obj) {
+                ptr.print(obj);
+            }
+
+            public  void printf(String format,Object ...obj) {
+                ptr.printf(format,obj);
+            }
+
+
+            public  void close() {
+                try {
+                    if (br != null)
+                        br.close();
+
+                    if (ptr != null) {
+                        ptr.flush();
+                        ptr.close();
+                    }
+                    if (DELETE_CLOSE) {
+                        br = null;
+                        ptr = null;
+                    }
+                } catch (Exception ignore) {
+
+                }
+            }
         }
     }
-
-    public static void pln(Object obj) {
-        print(obj);
-        print("\n");
-    }
-
-    public static void print(Object obj) {
-        ptr.print(obj);
-    }
-
-    public static void printf(String format,Object ...obj) {
-        ptr.printf(format,obj);
-    }
-
-    public static void close() {
-        try {
-            if (br != null)
-                br.close();
-
-            if (ptr != null) {
-                ptr.flush();
-                ptr.close();
-            }
-            if (DELETE_CLOSE) {
-                br = null;
-                ptr = null;
-            }
-        } catch (Exception ignore) {
-
-        }
-    }
-
-}
-
 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
