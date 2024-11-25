@@ -1,6 +1,6 @@
 {
 	"use_default_directory": false,
-	"lang_extension": ".java",
+	"lang_extension": ".cpp",
     "template_dir":"D:\\template_code",
     "lang_template_suffix": "_template.txt",
     "override_file":false,

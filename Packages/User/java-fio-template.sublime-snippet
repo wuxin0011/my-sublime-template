@@ -119,7 +119,7 @@
                     }
                 }
                 str += " }";
-                pln(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
+                println(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
             }
 
 
@@ -222,13 +222,17 @@
                 return temp;
             }
 
-            public  void pln(Object obj) {
-                print(obj);
-                print("\n");
+            public void println(Object ...objs) {
+               for(int i = 0;i < objs.length;i++) {
+                    print(objs[i]);
+               }
+               print("\n");
             }
 
-            public  void print(Object obj) {
-                ptr.print(obj);
+            public void print(Object ...objs) {
+               for(int i = 0;i < objs.length;i++) {
+                   ptr.print(objs[i]);
+               }
             }
 
             public  void printf(String format,Object ...obj) {

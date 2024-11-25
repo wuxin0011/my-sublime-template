@@ -94,6 +94,19 @@
             super.close();
         }
 
+        public void println(Object ...objs) {
+           for(int i = 0;i < objs.length;i++) {
+               super.print(objs[i]);
+           }
+           super.println("");
+        }
+
+        public void print(Object ...objs) {
+           for(int i = 0;i < objs.length;i++) {
+               super.print(objs[i]);
+           }
+        }
+
 
         public Scanner scanner = null;
 
