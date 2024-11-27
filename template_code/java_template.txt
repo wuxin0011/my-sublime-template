@@ -117,7 +117,7 @@ public class Template {
                 BufferedInputStream br = new File(DEFAULT_FILE_NAME).exists() ? new BufferedInputStream(new FileInputStream(new File(DEFAULT_FILE_NAME))) : new BufferedInputStream(System.in);
                 scanner = new Scanner(br);
             }catch (Exception e){
-
+                scanner = new Scanner(new BufferedInputStream(System.in));
             }
         }
     }
