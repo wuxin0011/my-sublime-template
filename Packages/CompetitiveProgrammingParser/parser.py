@@ -85,6 +85,25 @@ def update_settings():
     print("CompetitiveProgrammingParser Settings loaded successfully")
 
 
+def get_detail_name(name):
+    name = name.replace('https://',"")
+    name = name.replace('http://',"")
+    name = name.replace(':',"")
+    name = name.replace('.','_')
+    name = name.replace('problem','')
+    i = name.rfind('/')
+    if i != -1:
+        name = name[:i + 1]
+    i = name.find('contest')
+    if i != -1:
+        name = name[i:]
+    name = name.replace('/',"\\")
+    return name
+
+    
+
+
+
 # fetch current and working directories
 def fetch_directory(oj, action):
     global contest_name, contest_dir, working_dir, error
@@ -98,10 +117,13 @@ def fetch_directory(oj, action):
         os.makedirs(contest_dir)
     working_dir = contest_dir
     if action == 'contest':
-        working_dir = os.path.join(working_dir, contest_name)
+        # show_msg("working_dir:" + working_dir)
+        if contest_name.lower().find('div') != -1:
+            working_dir = os.path.join(working_dir, contest_name)
+        else:
+            working_dir = os.path.join(working_dir, get_detail_name(create_url))
     else:
         if GetSettings('date_dir'):
-            pass
             now = datetime.datetime.now()
             year = str(now.year)
             month = str(now.month).zfill(2)  
@@ -113,8 +135,6 @@ def fetch_directory(oj, action):
     except Exception as e:
         error = True
         raise Exception(str(e) + '\nPlease update your CompetitiveProgrammingParser settings.')
- 
-
 
     if GetSettings('open_in_new_window') and action == 'contest':
         os.system('subl -n \"' + working_dir + '\"')
@@ -193,7 +213,7 @@ def parse_testcases(tests, problem, action):
         filename = view_file_name
     o_name = filename
     origin_name = filename
-    if GetSettings('date_dir') and not os.path.isabs(filename):
+    if GetSettings('date_dir') and not os.path.isabs(filename) and action != 'contest':
         now = datetime.datetime.now()
         month = str(now.month).zfill(2) 
         day = str(now.day).zfill(2) 
@@ -243,12 +263,11 @@ def check_page_correctness(action):
         raise Exception('It seems that you are trying to parse a contest page. Please open a problem page!')
 
 
-def get_problem_name(tests, oj):
+def get_problem_name(tests, oj,action):
     global contest_name
     problem = tests["name"]
     if contest_name == None:
         contest_name = tests["group"].split('-', 1)[-1].strip()
-        show_msg('Contest: ' + contest_name)
     if oj == "CodeChef":
         problem = tests["url"].split('/')[-1]
     elif oj == "Yandex":
@@ -266,9 +285,10 @@ def get_problem_name(tests, oj):
         problem = tests["name"].split(' ')[0]
     else:
         problem = tests["url"].split('/')[-1]
-    if problem[0].isdigit() and not GetSettings('date_dir'):
+    if problem[0].isdigit() and not GetSettings('date_dir') and action != 'contest':
             problem = '_' + problem
     problem = problem.replace(" ", "_")
+    show_msg("problem name = " + problem)
     global create_url
     create_url = tests["url"]
     return problem
@@ -287,7 +307,7 @@ def handle(tests, action):
     except Exception as e:
         raise Exception(e)
     oj = tests["group"].split('-')[0].strip()
-    problem = get_problem_name(tests, oj)
+    problem = get_problem_name(tests, oj,action)
     cnt = problems.count(problem)
     if cnt == 5:
         error = True
