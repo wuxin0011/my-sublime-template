@@ -10,7 +10,6 @@
 
 ```lua
 require "plugins.autosave"
-require "plugins.autopair"
 require "plugins.autoinsert"
 require "plugins.autowrap"
 require "plugins.align_carets"
