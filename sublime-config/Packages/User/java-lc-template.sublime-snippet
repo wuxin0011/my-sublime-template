@@ -1,0 +1,115 @@
+<snippet>
+	<content><![CDATA[
+import java.util.*;
+import java.math.BigInteger;
+import java.io.*;
+
+
+/*
+@testcase-start
+
+@testcase-end
+*/
+
+public class ${TM_FILENAME/(\w+)\.java/\1/g} {
+    public static void main(String[] args) {
+
+         // _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g}.class,"null","../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt");
+         _LCUtil.run(${TM_FILENAME/(\w+)\.java/\1/g}.class,"null","__TEST_CASE__");
+         
+    }
+
+
+    public static void dbg(Object ...args) {
+        String str = "";
+        str += "{ ";
+        for(int i = 0 ;i < args.length;i++) {
+            str += String.valueOf(args[i]);
+            if(i < args.length - 1) {
+                str += ", ";
+            }
+        }
+        str += " }";
+        System.out.println(str);
+    }
+
+
+
+    public static long mins(long ...args){
+        long ans = args[0];
+        for(long x : args) {
+            if(x < ans) ans = x;
+        }
+        return ans;
+    }
+
+    public static int mins(int ...args){
+        int ans = args[0];
+        for(int x : args) {
+            if(x < ans) ans = x;
+        }
+        return ans;
+    }
+
+    public static int maxs(int ...args){
+        int ans = args[0];
+        for(int x : args) {
+            if(x > ans) ans = x;
+        }
+        return ans;
+    }
+
+    public static long maxs(long ...args){
+        long ans = args[0];
+        for(long x : args) {
+            if(x > ans) ans = x;
+        }
+        return ans;
+    }
+
+
+
+    public static int lowerBound(int[] array, int size, int target) {
+        int l = 0, r = size - 1;
+        while (l <= r) {
+            int mid = l + ((r - l) >> 1);
+            if (array[mid] >= target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+
+    public static long qpow(long x, int n, int mod) {
+        long ans = 1L;
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                ans = ans * x % mod;
+            }
+            n >>= 1;
+            x = x * x % mod;
+        }
+        return ans;
+    }
+
+    public static long gcd(long x, long y) {
+        while (y != 0 && x != 0) {
+            long temp = x % y;
+            x = y;
+            y = temp;
+        }
+        return x;
+    }
+
+
+
+
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>jlc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

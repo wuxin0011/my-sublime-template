@@ -1,0 +1,56 @@
+{
+    // Windows 
+    //  "shell_cmd": "javac  -d ${file_path}/../bin/  -sourcepath ${file}  ",
+    "shell_cmd": "javac -J-Dfile.encoding=utf8 ${file} -d bin && cd bin && java  ${file_base_name} ",
+    // check the file name using regex
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    // set the encoding to utf-8
+    "encoding": "utf8",
+    // doesn't matter if I use full path
+    "working_dir": "${file_path}",
+    // only java files can use this sublime-build file
+    "selector": "source.java",
+    "variants": [
+        {
+            // build and run in Terminus (sublime plugin)
+            // [Recommanded]''
+            "name": "Run In Terminus",
+            "target": "terminus_exec",
+            "cancel": "terminus_cancel_build",
+            "shell_cmd": "start cmd /c IF NOT EXIST bin MKDIR bin && javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && start cmd /K java ${file_base_name}"
+
+        },
+        {
+            // build and run in CMD
+            // you can type something in CMD then your progam can get its inputs
+            // [Recommanded]
+            "name": "Run in CMD",
+            "shell_cmd": "start cmd /c IF NOT EXIST bin MKDIR bin && javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && start cmd /K java ${file_base_name}"
+        },
+        {
+            // build and run in sublime
+            // but you can't input anything to your progam
+            "name": "Run in Sublime",
+            "shell_cmd": "javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && java ${file_base_name} "
+        },
+         {
+            // 仅仅测试输入
+            "name": "Run in Sublime and input",
+            "shell_cmd": "javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && java ${file_base_name} < \"../in/${file_base_name}/in.txt\""
+        },
+
+        {
+            // 输入 输出 以及期望结果 使用 GIT 比较输入输出文件
+            "name": "Run in Sublime and input and output use Git ",
+            "shell_cmd": "javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && java ${file_base_name} < \"../in/${file_base_name}/in.txt\" > \"../in/${file_base_name}/temp.txt\" && cmd /c git diff  \"../in/${file_base_name}/temp.txt\"  \"../in/${file_base_name}/out.txt\" "
+        },
+
+         {
+            // build and run in sublime
+            // 输入 输出 以及期望结果 使用 CMD 命令 比较输入输出文件
+            "name": "Run in Sublime and input and output ",
+            "shell_cmd": "javac -J-Dfile.encoding=utf8 -d bin ${file} && cd bin && java ${file_base_name} < \"../in/${file_base_name}/in.txt\" > \"../in/${file_base_name}/temp.txt\" && cmd /c comp /L /M  \"${file_path}/../in/${file_base_name}/temp.txt\"  \"${file_path}/../in/${file_base_name}/out.txt\" > nul && echo AC || echo NO"
+        }
+
+    ]
+}
