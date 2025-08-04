@@ -2,10 +2,16 @@
 
 这是个人的[sublime](https://www.sublimetext.com/)配置,如果需要更多定制化配置可以参考官方文档[sublime document](https://docs.sublimetext.io/)
 
-- template 是常用模板
 
-  
-  
+
+
+
+### 如何使用本仓库
+
+[如果需要了解如何使用该仓库内容，请看这里](./use.md)
+
+
+
 ## [sublime config](./sublime-config)
 
 
