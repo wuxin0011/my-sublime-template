@@ -442,7 +442,7 @@ class CompetitiveProgrammingParserFileCommand(sublime_plugin.TextCommand):
             show_msg("❌ Error: " + str(e))
             close_panel()
         try:
-            _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+            _thread.start_new_thread(startServer, (action,))
         except Exception as e:
             pass
 
@@ -484,7 +484,7 @@ class CompetitiveProgrammingParserSidebarCommand(sublime_plugin.WindowCommand):
             show_msg("❌ error: " + str(e))
             close_panel()
         try:
-            _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+            _thread.start_new_thread(startServer, (action,))
         except Exception as e:
             pass
 
@@ -494,3 +494,9 @@ class CompetitiveProgrammingParserSidebarCommand(sublime_plugin.WindowCommand):
     def is_visible(self, dirs, action):
         return len(dirs) == 1
 
+
+# 配置默认的解析方式 无需启动
+try:
+    _thread.start_new_thread(startServer, ('problem',))
+except Exception as e:
+    pass
