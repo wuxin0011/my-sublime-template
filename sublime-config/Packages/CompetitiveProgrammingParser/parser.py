@@ -436,11 +436,15 @@ class CompetitiveProgrammingParserFileCommand(sublime_plugin.TextCommand):
                 raise Exception('Language not set. Update your CompetitiveProgrammingParser settings.')
 
             # 直接启动线程（原有调用方式不变）
-            _thread.start_new_thread(startServer, (action,))
+            # _thread.start_new_thread(startServer, (action,))
 
         except Exception as e:
             show_msg("❌ Error: " + str(e))
             close_panel()
+        try:
+            _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+        except Exception as e:
+            pass
 
 # class CompetitiveProgrammingParserFileCommand(sublime_plugin.TextCommand):
 #     def run(self, edit, action):
@@ -476,12 +480,13 @@ class CompetitiveProgrammingParserSidebarCommand(sublime_plugin.WindowCommand):
             if GetSettings('lang_extension') == None:
                 error = True
                 raise Exception('language extension not set. Update your CompetitiveProgrammingParser settings.')
-            
-            
         except Exception as e:
             show_msg("❌ error: " + str(e))
             close_panel()
-        _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+        try:
+            _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+        except Exception as e:
+            pass
 
     def is_enabled(self, dirs, action):
         return len(dirs) == 1
