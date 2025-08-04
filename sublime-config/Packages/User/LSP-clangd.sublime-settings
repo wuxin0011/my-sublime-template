@@ -1,0 +1,12 @@
+{
+   "settings": {
+      "LSP": {
+         "clangd": {
+            "initializationOptions": {
+              // Put your settings here eg.
+              "clangd.header-insertion": "never",
+            }
+         }
+      }
+   }
+}

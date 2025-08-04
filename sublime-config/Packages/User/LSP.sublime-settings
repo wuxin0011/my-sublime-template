@@ -1,0 +1,24 @@
+{
+    "clients": {
+        "clangd": {
+            "enabled": true,
+            "command": ["clangd"],
+            "selector": "source.c | source.c++ | source.objc | source.objc++",
+            "initializationOptions": {
+                "headerInsertion": "never"
+            },
+
+            "settings": {
+                "editor": {
+                  "tabSize": 4,
+                  "insertSpaces": true
+                },
+                "clangd": {
+                  "completion": {
+                    "includeInsertion": false  
+                  }
+                }
+              }
+        }
+    }
+}

@@ -1,9 +1,8 @@
 {
 	"auto_complete": true,
 	"auto_match_enabled": true,
-	"font_size": 10,
+	/*"font_size": 10,*/
 	"theme": "Default Dark.sublime-theme",
-	"update_check":false,
 	"color_scheme": "Monokai.sublime-color-scheme",
 	"ignored_packages":
 	[
@@ -13,4 +12,11 @@
 	"index_files": false,
 	"highlight_line":true,
 	"font_options": ["no_italic"],
+	"enable_telemetry": false,
+	"update_check":false,
+	/*"font_size": 9,*/
+	"letter_spacing":0.5,
+	"tab_size": 4,
+    "translate_tabs_to_spaces": true, 
+	"font_size": 10,
 }

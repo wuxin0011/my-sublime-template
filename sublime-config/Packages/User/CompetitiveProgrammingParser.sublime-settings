@@ -4,7 +4,7 @@
     "template_dir":"D:\\template_code",
     "lang_template_suffix": "_template.txt",
     "override_file":false,
-    "close_log":false,
+    "close_log":true,
     "date_dir":true,
     "support_list":["cpp","java","c","go","py","js","c#"],
     "create_author":"wuxin0011",

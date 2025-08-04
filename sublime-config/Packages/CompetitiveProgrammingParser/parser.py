@@ -42,6 +42,7 @@ def plugin_loaded():
 
 def show_msg(msg):
     global close_log,sep
+    close_log=True
     if not close_log:
         if not sep:
             sep = True

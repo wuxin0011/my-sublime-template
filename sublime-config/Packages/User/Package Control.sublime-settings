@@ -1,12 +1,16 @@
 {
 	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
 	"installed_packages":
 	[
-		"CppFastOlympicCoding",
 		"CompetitiveProgrammingParser",
+		"CppFastOlympicCoding",
+		"LSP",
+		"LSP-clangd",
 		"Package Control",
+		"Theme - Adaptify",
+		"Visual Studio Code Plus Scheme",
+	],
+	"in_process_packages":
+	[
 	],
 }
