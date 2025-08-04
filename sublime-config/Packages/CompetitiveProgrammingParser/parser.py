@@ -17,7 +17,7 @@ problems = []
 # close create info ?
 close_message = 0
 close_log = False
-debug_mode = 1
+debug_mode = 0
 
 create_time = None
 create_author = None
@@ -55,7 +55,7 @@ def show_msg(msg):
 def close_panel():
     if not error:
         show_msg('closing console...')
-        time.sleep(10)
+        time.sleep(10000)
         sublime.active_window().run_command('hide_panel')
         print('closed console')
     print('------------------------------END------------------------------')
@@ -335,60 +335,136 @@ def handle(tests, action):
         show_msg("❌ Problem " + problem + " (" + str(problems_parsed) + "/" + str(totalProblems) + ")" + " fail : detail => " + e)
 
 
+# def MakeHandlerClass(action):
+#     class HandleRequests(BaseHTTPRequestHandler):
+#         def do_POST(self):
+#             try:
+#                 handle(json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode('utf8')), action)
+#                 if globa_test_file:
+#                     show_msg('✔️ testcase save location:' + globa_test_file +  "  👜")
+#                 if globa_targer_file:
+#                     show_msg('✔️ file   save   location:' + globa_targer_file + " 👜")
+#             except Exception as e:
+#                 show_msg("❌ error: " + str(e))
+#             threading.Thread(target=self.server.shutdown, daemon=True).start()
+
+#     return HandleRequests
+
+
 def MakeHandlerClass(action):
     class HandleRequests(BaseHTTPRequestHandler):
         def do_POST(self):
             try:
-                handle(json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode('utf8')), action)
+                # 1. 读取并解析请求数据
+                content_length = int(self.headers['Content-Length'])
+                post_data = self.rfile.read(content_length).decode('utf8')
+                data = json.loads(post_data)
+                
+                # 2. 处理请求（调用你的原有逻辑）
+                handle(data, action)
+                
+                # 3. 打印成功消息（可选）
                 if globa_test_file:
-                    show_msg('✔️ testcase save location:' + globa_test_file +  "  👜")
+                    show_msg('✔️ Testcase saved: ' + globa_test_file)
                 if globa_targer_file:
-                    show_msg('✔️ file   save   location:' + globa_targer_file + " 👜")
+                    show_msg('✔️ File saved: ' + globa_targer_file)
+                    
+                # 4. 返回成功响应（必须）
+                self.send_response(200)
+                self.end_headers()
+                
             except Exception as e:
-                show_msg("❌ error: " + str(e))
-            threading.Thread(target=self.server.shutdown, daemon=True).start()
+                # 5. 返回错误响应（必须）
+                self.send_error(500, message=str(e))
+                show_msg("❌ Error: " + str(e))
 
-    return HandleRequests
+    return HandleRequests  # 返回 Handler 类（不要关闭服务器！）
+
+
+# class CompetitiveCompanionServer:
+#     def startServer(action):
+#         try:
+#             httpd = HTTPServer(('localhost', 12345), MakeHandlerClass(action))
+#             while problems_parsed < totalProblems and not error:
+#                 httpd.serve_forever()
+#             if action == 'contest' and successful_problems > 0:
+#                 x = "All" if successful_problems == totalProblems else "Only"
+#                 show_msg(x + " (" + str(successful_problems) + "/" + str(totalProblems) + ") Problems of \'" + str(
+#                     contest_name) + "\'" + ' were parsed successfully')
+#             close_panel()
+#         except Exception as e:
+#             pass
 
 
 class CompetitiveCompanionServer:
+    @staticmethod
     def startServer(action):
         try:
             httpd = HTTPServer(('localhost', 12345), MakeHandlerClass(action))
-            while problems_parsed < totalProblems and not error:
-                httpd.serve_forever()
-            if action == 'contest' and successful_problems > 0:
-                x = "All" if successful_problems == totalProblems else "Only"
-                show_msg(x + " (" + str(successful_problems) + "/" + str(totalProblems) + ") Problems of \'" + str(
-                    contest_name) + "\'" + ' were parsed successfully')
-            close_panel()
+            httpd.serve_forever()  # 直接无限监听，不依赖 problems_parsed 条件
         except Exception as e:
-            pass
+            if not error:  # 仅在其他未处理的异常时显示错误
+                show_msg("❌ Server error: " + str(e))
+            close_panel()
 
+
+
+def startServer(action):
+    try:
+        httpd = HTTPServer(('localhost', 12345), MakeHandlerClass(action))
+        httpd.serve_forever()  # 直接无限监听，不依赖 problems_parsed 条件
+    except Exception as e:
+        if not error:  # 仅在其他未处理的异常时显示错误
+            show_msg("❌ Server error: " + str(e))
+        close_panel()
 
 class CompetitiveProgrammingParserFileCommand(sublime_plugin.TextCommand):
     def run(self, edit, action):
-        global error
+        global error, parse_in_view_file, view_file_name
         reset()
         try:
-            if action == 'testcase' and self.view.file_name() == None:
+            if action == 'testcase' and self.view.file_name() is None:
                 error = True
                 raise Exception("Can't parse testcases for an untitled file.")
 
             if action == 'testcase':
-                global parse_in_view_file, view_file_name
                 parse_in_view_file = True
                 view_file_name = self.view.file_name()
 
-            if GetSettings('lang_extension') == None:
+            if GetSettings('lang_extension') is None:
                 error = True
                 raise Exception('Language not set. Update your CompetitiveProgrammingParser settings.')
 
-            _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+            # 直接启动线程（原有调用方式不变）
+            _thread.start_new_thread(startServer, (action,))
 
         except Exception as e:
-            show_msg("❌ error: " + str(e))
+            show_msg("❌ Error: " + str(e))
             close_panel()
+
+# class CompetitiveProgrammingParserFileCommand(sublime_plugin.TextCommand):
+#     def run(self, edit, action):
+#         global error
+#         reset()
+#         try:
+#             if action == 'testcase' and self.view.file_name() == None:
+#                 error = True
+#                 raise Exception("Can't parse testcases for an untitled file.")
+
+#             if action == 'testcase':
+#                 global parse_in_view_file, view_file_name
+#                 parse_in_view_file = True
+#                 view_file_name = self.view.file_name()
+
+#             if GetSettings('lang_extension') == None:
+#                 error = True
+#                 raise Exception('Language not set. Update your CompetitiveProgrammingParser settings.')
+#         except Exception as e:
+#             show_msg("❌ error: " + str(e))
+#             close_panel()
+#         _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+
+
 
 
 class CompetitiveProgrammingParserSidebarCommand(sublime_plugin.WindowCommand):
@@ -400,13 +476,16 @@ class CompetitiveProgrammingParserSidebarCommand(sublime_plugin.WindowCommand):
             if GetSettings('lang_extension') == None:
                 error = True
                 raise Exception('language extension not set. Update your CompetitiveProgrammingParser settings.')
-            _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
+            
+            
         except Exception as e:
             show_msg("❌ error: " + str(e))
             close_panel()
+        _thread.start_new_thread(CompetitiveCompanionServer.startServer, (action,))
 
     def is_enabled(self, dirs, action):
         return len(dirs) == 1
 
     def is_visible(self, dirs, action):
         return len(dirs) == 1
+
