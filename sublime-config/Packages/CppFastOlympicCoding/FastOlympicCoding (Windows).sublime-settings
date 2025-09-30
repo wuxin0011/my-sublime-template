@@ -20,17 +20,20 @@
 			"extensions": ["cpp"],
 			"compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 \"{source_file}\" -std=c++2a -o \"{file_name}\"",
 			"run_cmd": "\"{source_file_dir}\\{file_name}.exe\" {args} -debug",
-
-			"lint_compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -std=gnu++2a \"{source_file}\" -I \"{source_file_dir}\""
+			"lint_compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -std=c++2a \"{source_file}\" -I \"{source_file_dir}\""
 		},
-
 		{
 			"name": "Python",
 			"extensions": ["py"],
 			"compile_cmd": null,
 			"run_cmd": "python \"{source_file}\""
 		},
-		
+		{
+			"name": "Go",
+			"extensions": ["go"],
+			"compile_cmd": "go build \"{source_file}\"",
+			"run_cmd": "go run \"{source_file}\"",
+		},
 		{
 			"name": "Java",
 			"extensions": ["java"],
