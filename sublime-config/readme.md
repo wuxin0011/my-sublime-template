@@ -35,3 +35,15 @@
 
 
 [Packages](./Packages) 是sublime个人常用编辑器配置文件 一般是复制到本地目录 `C:\Users\Administrator\AppData\Roaming\Sublime Text\Packages` 中即可
+
+
+
+
+
+
+
+
+
+插件推荐 
+
+- [Gopls：在 Sublime Text 中使用](https://golang.ac.cn/gopls/editor/sublime) 如果没有请手动下载 gopls
