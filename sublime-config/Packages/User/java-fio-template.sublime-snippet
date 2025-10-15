@@ -40,7 +40,7 @@
 
 
         public static class IO {
-            static int MAXN = (int) 1e6 + 1;
+            static int MAXN_N = (int) 1e6 + 1;
 
             public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
             public static final boolean DELETE_CLOSE = false; // auto close ?
@@ -143,7 +143,7 @@
             public  long[] LONG_ARRAY = null;
             public  long[] readLongArray(){
                 if( LONG_ARRAY == null) {
-                    LONG_ARRAY = new long[100001];
+                    LONG_ARRAY = new long[MAXN_N];
                 }
                 int size = 0;
                 while(true) {
@@ -180,10 +180,9 @@
                 return temp;
             }
 
-            public  String[] STRING_ARRAY = null;
             public  String[] readStringArray(){
                 if( STRING_ARRAY == null) {
-                    STRING_ARRAY = new String[100001];
+                    STRING_ARRAY = new String[MAXN_N];
                 }
                 int size = 0;
                 while(true) {
@@ -261,14 +260,13 @@
             // --------------------------------------------string-----------------------------------------------------------
 
             // MAX string SK
-            public static int MAX_STRING_LENGTH = (int) 1e5 + 1;
 
             public  char[] CHAR_ARRAY = null;
 
             public  char[] readCharArray(boolean line){
                 try {
                     if (CHAR_ARRAY == null) {
-                        CHAR_ARRAY = new char[MAX_STRING_LENGTH];
+                        CHAR_ARRAY = new char[MAXN_N];
                     }
                     int x = br.read();
                     if (x == -1) {

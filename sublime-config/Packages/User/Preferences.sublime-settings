@@ -2,8 +2,8 @@
 	"auto_complete": true,
 	"auto_match_enabled": true,
 	/*"font_size": 10,*/
-	"theme": "Default Dark.sublime-theme",
-	"color_scheme": "Monokai.sublime-color-scheme",
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Catppuccin Macchiato.sublime-color-scheme",
 	"ignored_packages":
 	[
 		"Vintage",
