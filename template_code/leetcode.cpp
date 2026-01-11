@@ -22,9 +22,20 @@ namespace LeetCode {
   bool is_ignore(const char& c) {
     return c == ' ' || c == '\n' || c == '\r' || c == '\f' || c == '\b' || c == '\"';
   }
-    template <typename T> T getValue(std::string s) {
+  std::string filter_string(const std::string temp) {
+    std::string ans;
+    for(auto& c : temp) {
+      if(is_ignore(c)){
+        continue;
+      }
+      ans += c;
+    }
+    return ans;
+  }
+
+template <typename T> T getValue(std::string s) {
   const std::string name = typeid(T).name();
-  // cout<<"name = " << name << "\n";
+  // std::cout<<"name = " << name << "\n";
   // int
   if (name.size() == 1 && name[0] == 'i') {
     return std::stoi(s);
@@ -59,10 +70,20 @@ namespace LeetCode {
   }
   // string
   else if(name.find("string")) {
-
+    
   }
   return 0;
 }
+
+
+std::string parsestring(std::string s) {
+  return filter_string(s);
+}
+
+template <typename T> T parse(std::string s) {
+  return getValue<T>(filter_string(s));
+}
+
 
 template <typename T> std::vector<T> parse1array(const std::string &temp) {
   std::vector<T> b;
