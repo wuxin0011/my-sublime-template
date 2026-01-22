@@ -14,13 +14,21 @@
 	// "{source_file}": relative path to file
 	// "{source_file_dir}": relative path to file directory
 	// "{file_name}": file basename
+
+	// {
+	// 		"name": "C++",
+	// 		"extensions": ["cpp"],
+	// 		"compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -g -fsanitize=address -fsanitize=undefined  -fno-omit-frame-pointer -O1 -Wall -Wextra -pedantic \"{source_file}\"  -std=c++2a -o \"{file_name}\"",
+	// 		"run_cmd": "\"{source_file_dir}\\{file_name}.exe\" {args} -debug",
+	// 		"lint_compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -std=c++2a -g -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -O1 -Wall -Wextra -pedantic  \"{source_file}\" -I \"{source_file_dir}\""
+	// 	},
 	"run_settings": [
 		{
 			"name": "C++",
 			"extensions": ["cpp"],
-			"compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 \"{source_file}\" -std=c++2a -o \"{file_name}\"",
+			"compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -g -fsanitize=address -fsanitize=undefined  -fno-omit-frame-pointer -O1 -Wall -Wextra -pedantic \"{source_file}\"  -std=c++2a -o \"{file_name}\"",
 			"run_cmd": "\"{source_file_dir}\\{file_name}.exe\" {args} -debug",
-			"lint_compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -std=c++2a \"{source_file}\" -I \"{source_file_dir}\""
+			"lint_compile_cmd": "g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -std=c++2a -g -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -O1 -Wall -Wextra -pedantic  \"{source_file}\" -I \"{source_file_dir}\""
 		},
 		{
 			"name": "Python",
