@@ -1,0 +1,15 @@
+{
+  // Each snippet must have a name and body, but the prefix and description are optional.
+  // The prefix is used to trigger the snippet, but when omitted then the name is used.
+  // Use placeholders like $1, $2 or ${1:defaultValue} to define tab stops.
+  // The $0 determines the final cursor position.
+  // Placeholders with the same value are linked.
+  "create cpp template": {
+    "prefix": "cppio",
+    "body": [
+      "#include <bits/stdc++.h>\nusing namespace std;\n#ifdef __IS_LEETCODE__\n#include \"D://template_code//leetcode.cpp\"\n#endif\n\n#ifdef __IS_LOCAL__\n#include \"D://template_code//debug.cpp\"\nusing namespace dbg;\n#else\n#define debug(...) ((void)0)\n#endif\n\nusing ll = long long;\n\nconstexpr int inf = 1e9,N = 2e5 + 10,mod = 1e9 + 7;\n\n\nvoid solve() {\n    \n}\n\n\n\nint main() {\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n    int tt = 1;\n    // cin >> tt;\n    while(tt--)solve();\n    return 0;\n}\n",
+      "$0"
+    ],
+    "description": "create cpp template"
+  }
+}

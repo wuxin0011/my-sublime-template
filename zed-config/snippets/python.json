@@ -1,0 +1,12 @@
+{
+  // Each snippet must have a name and body, but the prefix and description are optional.
+  // The prefix is used to trigger the snippet, but when omitted then the name is used.
+  // Use placeholders like $1, $2 or ${1:defaultValue} to define tab stops.
+  // The $0 determines the final cursor position.
+  // Placeholders with the same value are linked.
+  "create py template": {
+    "prefix": "pyio",
+    "body": ["from collections import Counter, defaultdict, deque\nfrom functools import cmp_to_key, lru_cache, reduce\nfrom heapq import merge, heapify, heappop, heappush, heappushpop, nlargest, nsmallest\nfrom itertools import accumulate, combinations, permutations, count, product\nfrom typing import *\nimport sys,math\ninput = lambda: sys.stdin.readline().strip()\ninf = math.inf\n\nI   = lambda : input()\nII  = lambda : int(I())\nLI  = lambda : list(I())\nLII = lambda : list(map(int,I().split()))\n\ndef solve():\n    pass\n\ntt=1\n# tt=II()\nfor _ in range(tt):\n    solve()\n\n"],
+    "description": "pyio"
+  }
+}
