@@ -16,7 +16,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",
-    "dark": "Zed (Default)"
+    "dark": "Colored Zed Icons Theme Dark"
   },
   "agent_buffer_font_size": 14.0,
   "ui_font_weight": 300.0,
@@ -25,5 +25,5 @@
   "base_keymap": "JetBrains",
   "ui_font_size": 14.0,
   "buffer_font_size": 13.0,
-  "theme": "Ayu Mirage",
+  "theme": "JetBrains Dark",
 }

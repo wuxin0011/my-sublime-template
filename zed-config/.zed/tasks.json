@@ -1,0 +1,35 @@
+[
+  {
+    "label": "run java",
+    "command": "bash",
+    "args": [
+      "-c",
+      "cd ..; clear ; javac \"$ZED_FILE\" ; java \"$ZED_STEM\"",
+    ],
+    "allow_concurrent_runs": false,
+    "use_new_terminal": false,
+    "reveal": "always",
+  },
+  {
+    "label": "run cpp",
+    "command": "bash",
+    "args": [
+      "-c",
+      "cd ..; clear ; g++ -D__IS_LOCAL__=1 -D__IS_LEETCODE__=1 -D__IS_DEBUG__=1 -std=c++2a \"$ZED_STEM.cpp\" -o \"$ZED_STEM\" ;cat \"$ZED_STEM.in\" | ./\"$ZED_STEM\" ",
+    ],
+    "allow_concurrent_runs": false,
+    "use_new_terminal": false,
+    "reveal": "always",
+  },
+  {
+    "label": "run py",
+    "command": "bash",
+    "args": [
+      "-c",
+      "cd ..; clear ; cat ./\"$ZED_STEM.in\" | python \"$ZED_STEM.py\"",
+    ],
+    "allow_concurrent_runs": false,
+    "use_new_terminal": false,
+    "reveal": "always",
+  },
+]
