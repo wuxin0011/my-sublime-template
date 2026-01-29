@@ -1,0 +1,23 @@
+<snippet>
+    <content><![CDATA[
+import sys
+input = lambda: sys.stdin.readline().strip()
+inf   = int(0x3fffffffffffffffff)
+I     = lambda : input()
+II    = lambda : int(I())
+LI    = lambda : I().split()
+LII   = lambda : list(map(int,I().split()))
+
+def solve():
+    pass
+
+tt=1
+# tt=II()
+for _ in range(tt):
+    solve()
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>pys0io</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.python</scope>
+</snippet>

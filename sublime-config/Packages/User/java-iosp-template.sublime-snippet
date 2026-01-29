@@ -1,129 +1,129 @@
 <snippet>
     <content><![CDATA[
 
-    import java.util.*;
-    import java.io.*;
+import java.util.*;
+import java.io.*;
 
 
-    public class ${TM_FILENAME/(\w+)\.java/\1/g} {
+public class ${TM_FILENAME/(\w+)\.java/\1/g} {
 
 
-        
-        static int MAXN = (int) 1e6 + 1;
-        static int MOD7 = (int) 1e9 + 7,MOD8 =  80112002,MOD9 = 998244353,inf = Integer.MAX_VALUE;
-        static int MOD  =  (int) MOD9;
+    
+    static int MAXN = (int) 1e6 + 1;
+    static int MOD7 = (int) 1e9 + 7,MOD8 =  80112002,MOD9 = 998244353,inf = Integer.MAX_VALUE;
+    static int MOD  =  (int) MOD9;
 
 
-        public static class MainClass {
+    public static class MainClass {
 
 
-            void solve(){
-                // todo...
+        void solve(){
+            // todo...
+        }
+
+            
+    }
+
+
+    static IO io;
+
+    public static void main(String[] args) {
+        io = new IO();
+        int t = 1;
+        // t = io.read();
+        for(;t > 0;t--) {
+            new MainClass().solve();
+        }
+        io.close();
+    }
+
+
+
+
+
+   public static class IO extends PrintWriter{
+    static boolean isDebug = false;
+    public void dbg(Object ...args) {
+
+        if(!isDebug){
+            return;
+        }
+        String argsStringIndex = "";
+        // argsStringIndex += "{ ";
+        // for(int i = 0;i < args.length;i++) {
+        //     argsStringIndex += i;
+        //     if(i != args.length-1) {
+        //         argsStringIndex +=",";
+        //     }
+        // }
+        // argsStringIndex += " }";
+        String str = "";
+        str += "{ ";
+        for(int i = 0 ;i < args.length;i++) {
+            str += String.valueOf(args[i]);
+            if(i < args.length - 1) {
+                str += " ,";
             }
-
-                
         }
+        str += " }";
+        println(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
+    }
+    public int read(){
+        return scanner.nextInt();
+    }
+    public long readLong(){
+        return scanner.nextLong();
+    }
+    public double readDouble(){
+        return scanner.nextDouble();
+    }
+    public boolean readBoolean(){
+        return scanner.nextBoolean();
+    }
+    public String readString(){
+        return scanner.next();
+    }
+    public String readLine(){
+        return scanner.nextLine();
+    }
+
+    @Override
+    public void close() {
+        scanner.close();
+        super.flush();
+        super.close();
+    }
+
+    public void println(Object ...objs) {
+       for(int i = 0;i < objs.length;i++) {
+           super.print(objs[i]);
+       }
+       super.println("");
+    }
+
+    public void print(Object ...objs) {
+       for(int i = 0;i < objs.length;i++) {
+           super.print(objs[i]);
+       }
+    }
 
 
-        static IO io;
+    public Scanner scanner = null;
 
-        public static void main(String[] args) {
-            io = new IO();
-            int t = 1;
-            // t = io.read();
-            for(;t > 0;t--) {
-                new MainClass().solve();
-            }
-            io.close();
-        }
+    
+    public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
 
-
-
-
-
-       public static class IO extends PrintWriter{
-        boolean isDebug = true;
-        public void dbg(Object ...args) {
-
-            if(!isDebug){
-                return;
-            }
-            String argsStringIndex = "";
-            // argsStringIndex += "{ ";
-            // for(int i = 0;i < args.length;i++) {
-            //     argsStringIndex += i;
-            //     if(i != args.length-1) {
-            //         argsStringIndex +=",";
-            //     }
-            // }
-            // argsStringIndex += " }";
-            String str = "";
-            str += "{ ";
-            for(int i = 0 ;i < args.length;i++) {
-                str += String.valueOf(args[i]);
-                if(i < args.length - 1) {
-                    str += " ,";
-                }
-            }
-            str += " }";
-            println(argsStringIndex + (argsStringIndex.length() != 0 ? " = " : "") + str);
-        }
-        public int read(){
-            return scanner.nextInt();
-        }
-        public long readLong(){
-            return scanner.nextLong();
-        }
-        public double readDouble(){
-            return scanner.nextDouble();
-        }
-        public boolean readBoolean(){
-            return scanner.nextBoolean();
-        }
-        public String readString(){
-            return scanner.next();
-        }
-        public String readLine(){
-            return scanner.nextLine();
-        }
-
-        @Override
-        public void close() {
-            scanner.close();
-            super.flush();
-            super.close();
-        }
-
-        public void println(Object ...objs) {
-           for(int i = 0;i < objs.length;i++) {
-               super.print(objs[i]);
-           }
-           super.println("");
-        }
-
-        public void print(Object ...objs) {
-           for(int i = 0;i < objs.length;i++) {
-               super.print(objs[i]);
-           }
-        }
-
-
-        public Scanner scanner = null;
-
-        
-        public static final String DEFAULT_FILE_NAME = "../in/${TM_FILENAME/(\w+)\.java/\1/g}/in.txt"; // default read file
-
-        public IO() {
-            super(new BufferedOutputStream(System.out));
-            try{
-                BufferedInputStream br = new File(DEFAULT_FILE_NAME).exists() ? new BufferedInputStream(new FileInputStream(new File(DEFAULT_FILE_NAME))) : new BufferedInputStream(System.in);
-                scanner = new Scanner(br);
-            }catch (Exception e){
-                scanner = new Scanner(new BufferedInputStream(System.in));
-            }
+    public IO() {
+        super(new BufferedOutputStream(System.out));
+        try{
+            BufferedInputStream br = new File(DEFAULT_FILE_NAME).exists() ? new BufferedInputStream(new FileInputStream(new File(DEFAULT_FILE_NAME))) : new BufferedInputStream(System.in);
+            scanner = new Scanner(br);
+        }catch (Exception e){
+            scanner = new Scanner(new BufferedInputStream(System.in));
         }
     }
-    }
+}
+}
 
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

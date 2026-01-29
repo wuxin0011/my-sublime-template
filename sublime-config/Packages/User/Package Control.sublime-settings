@@ -5,6 +5,8 @@
 		"Catppuccin color schemes",
 		"CompetitiveProgrammingParser",
 		"CppFastOlympicCoding",
+		"Default File Type",
+		"FileIcons",
 		"Icon Fonts",
 		"LSP",
 		"LSP-clangd",
@@ -12,6 +14,7 @@
 		"Package Control",
 		"Theme - Adaptify",
 		"Theme - Coffee",
+		"Transparency",
 		"Visual Studio Code Plus Scheme",
 	],
 	"in_process_packages":

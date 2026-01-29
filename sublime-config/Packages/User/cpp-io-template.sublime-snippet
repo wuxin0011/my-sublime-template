@@ -15,7 +15,7 @@ using namespace dbg;
 
 using ll = long long;
 
-constexpr int inf = 1e9,N = 2e5 + 10;
+constexpr int inf = 1e9,N = 2e5 + 10,mod = 1e9 + 7;
 
 
 void solve() {
@@ -28,7 +28,7 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int tt = 1;
-    cin >> tt;
+    // cin >> tt;
     while(tt--)solve();
     return 0;
 }

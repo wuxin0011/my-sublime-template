@@ -20,7 +20,8 @@
 	"preview_action" : false,
 
 	// Encoding for new file, empty means using sublime text's "default_encoding" setting
-	"default_encoding_on_create" : "",
+	"default_encoding_on_create" : "UTF-8",
+	"default_encoding" : "UTF-8",
 
 	// Set this option to true will cause Sublime Text reload the saved file when losing focus
 	"lazy_reload": false,

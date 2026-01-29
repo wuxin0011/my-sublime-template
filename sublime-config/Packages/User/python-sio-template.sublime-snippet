@@ -1,0 +1,31 @@
+<snippet>
+    <content><![CDATA[
+from collections import Counter, defaultdict, deque
+from functools import cmp_to_key, lru_cache, reduce
+from heapq import merge, heapify, heappop, heappush, heappushpop, nlargest, nsmallest
+from itertools import accumulate, combinations, permutations, count, product
+from typing import *
+import sys,math
+input = lambda: sys.stdin.readline().strip()
+inf = math.inf
+
+I   = lambda : input()
+II  = lambda : int(I())
+LI  = lambda : list(I())
+LII = lambda : list(map(int,I().split()))
+
+def solve():
+    pass
+
+tt=1
+# tt=II()
+for _ in range(tt):
+    solve()
+
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>pysio</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.python</scope>
+</snippet>

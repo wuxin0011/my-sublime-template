@@ -3,12 +3,13 @@
 	"auto_match_enabled": true,
 	/*"font_size": 10,*/
 	"theme": "Adaptive.sublime-theme",
-	"color_scheme": "Catppuccin Macchiato.sublime-color-scheme",
+	"color_scheme": "Catppuccin Mocha.sublime-color-scheme",
 	"ignored_packages":
 	[
 		"Vintage",
 	],
 	"font_face": "Fira Code",
+	// "font_face": "Fira Code",
 	"index_files": false,
 	"highlight_line":true,
 	"font_options": ["no_italic"],
@@ -19,4 +20,7 @@
 	"tab_size": 4,
     "translate_tabs_to_spaces": true, 
 	"font_size": 10,
+	"show_panel":true,
+	"use_current_file_syntax": false,
+    "default_new_file_syntax": "Packages/C++/C++.sublime-syntax",
 }
