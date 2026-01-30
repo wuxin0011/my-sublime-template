@@ -1,12 +1,36 @@
 <snippet>
 	<content><![CDATA[
-from collections import  *
-from functools import  *
-from itertools import  *
+from collections import Counter, defaultdict, deque
+from functools import cache,cmp_to_key, lru_cache, reduce
+from heapq import merge, heapify, heappop, heappush, heappushpop, nlargest, nsmallest
+from itertools import accumulate, combinations, permutations, count, product
 from typing import *
-from heapq import *
-from bisect import *
-from sortedcontainers  import *
+import sys,math
+import os
+IS_LOCAL = os.getenv("LEETCODE_USERNAME") != None
+input = lambda: sys.stdin.readline().strip()
+inf = math.inf
+
+I   = lambda : input()
+II  = lambda : int(I())
+LI  = lambda : list(I())
+LII = lambda : list(map(int,I().split()))
+
+
+
+
+
+
+
+
+if IS_LOCAL:
+    def solve():
+        pass
+
+    tt=1
+    # tt=II()
+    for _ in range(tt):
+        solve()
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>pylc</tabTrigger>
