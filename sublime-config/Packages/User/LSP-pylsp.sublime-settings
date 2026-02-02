@@ -1,0 +1,12 @@
+
+{
+    "settings": {
+        "pylsp.configurationSources": ["pycodestyle"],
+        "pylsp.plugins.flake8.enabled": false,
+        "pylsp.plugins.pycodestyle.enabled": false,
+        "pylsp.plugins.pydocstyle.enabled": false,
+        "pylsp.plugins.pyflakes.enabled": false,
+        "pylsp.plugins.pylint.enabled": false,
+        "pylsp.plugins.pylsp_mypy.enabled": false,
+    },
+}
