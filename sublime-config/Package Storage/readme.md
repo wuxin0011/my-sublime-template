@@ -2,6 +2,14 @@
 
 
 
+
+
+更新因为对于github or gitee 最大容量为50mb，因此现在用 云盘存储 [download](https://wwben.lanzoul.com/ikzJH3hm6lej)🚀
+
+
+
+
+
 对于python 安装 pylsp
 
 配置部分
