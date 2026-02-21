@@ -1,0 +1,234 @@
+package template.str.hash;
+
+import code_generation.utils.RandomArrayUtils;
+import template.str.Manacher.ManacherTemplate;
+import template.str.kmp.KMP_Template;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * 双模hash 常数大于普通 hash 板子，但是极大不会被卡（除非是常数过大 卡tl)
+ */
+public class StringHash2Template {
+
+
+    // 检查回文 如果需要copy请直接附带
+    public static class StringHashPalindrome {
+        StringHash stringHash1, stringHash2;
+        int n;
+        public StringHashPalindrome(char[] array) {
+            char[] a = new char[array.length];
+            for(int i = 0;i < array.length;i++) {
+                a[i] = array[i];
+            }
+            this.n = a.length;
+            char[] b = new char[n];
+            for (int i = 0; i < n; i++) {
+                b[i] = a[n - i - 1];
+            }
+            this.stringHash1 = new StringHash(a);
+            this.stringHash2 = new StringHash(b);
+        }
+        public long get(int l,int r){
+            return  stringHash1.get(l,r);
+        }
+        // query [l,r]  isPalindrome
+        public boolean isPalindromeString(int l, int r) {
+            return stringHash1.get(l, r) == stringHash2.get(n - r - 1, n - l - 1);
+        }
+    }
+
+
+    // string hash 开始
+    public static class StringHash {
+        private static final int base1 = (int) 8e8 + new Random().nextInt((int) 1e8);
+        private static final int base2 = (int) 8e8 + new Random().nextInt((int) 1e8);
+        private static final int mod1 = 1_070_777_777;
+        private static final int mod2 = 1_000_000_007;
+        int[] powBase1, powBase2, preHash1, preHash2;
+        int n;
+        int[] array,suf;
+
+        public StringHash(char[] chars) {
+            int[] a = new int[chars.length];
+            for(int i = 0;i < chars.length;i++) {
+                a[i] = chars[i];
+            }
+            this.n = a.length;
+            this.array = a;
+            powBase1 = new int[n];
+            powBase2 = new int[n];
+            preHash1 = new int[n];
+            preHash2 = new int[n];
+            powBase1[0] = powBase2[0] = 1;
+            preHash1[0] = preHash2[0] = a[0] + 1;
+            for (int i = 1; i < n; i++) {
+                powBase1[i] = (int) (powBase1[i - 1] * 1L * base1 % mod1);
+                powBase2[i] = (int) (powBase2[i - 1] * 1L * base2 % mod2);
+                preHash1[i] = (int) ((preHash1[i - 1] * 1L * base1 + a[i] + 1) % mod1);
+                preHash2[i] = (int) ((preHash2[i - 1] * 1L * base2 + a[i] + 1) % mod2);
+            }
+        }
+
+        // [l,r]
+        // len = r - l + 1
+        public long get(int l, int r) {
+            long subHash1 = ((preHash1[r] - (l > 0 ? (preHash1[l - 1] * 1L * powBase1[r - l + 1]) : 0)) % mod1 + mod1) % mod1;
+            long subHash2 = ((preHash2[r] - (l > 0 ? (preHash2[l - 1] * 1L * powBase2[r - l + 1]) : 0)) % mod2 + mod2) % mod2;
+            long subHash = subHash1 << 32 | subHash2;
+            return subHash;
+        }
+    }
+    // string hash 结束
+
+
+
+    public static void main(String[] args) {
+        // test();
+        test02();
+//        test03();
+    }
+
+
+//    测试KMP
+
+    static void test() {
+
+
+        boolean ok = true;
+
+        for (int t = 0; t < 1; t++) {
+            char[] chars = RandomArrayUtils.randomCharArray(100, 1000);
+//            chars = "admin hello world fdasfasfdsafdsadadminadminpp aadmin admin xxxx admin".toCharArray();
+            char[] p = RandomArrayUtils.randomCharArray(chars.length);
+//            p = "a".toCharArray();
+            List<Integer> ans = KMP_Template.kmpList(chars, p);
+//            System.out.println(ans);
+            List<Integer> res = new ArrayList<>();
+
+
+            StringHash hash1 = new StringHash(chars);
+            StringHash hash2 = new StringHash(p);
+
+            int n = p.length;
+            long v1 = hash2.get(0, n - 1);
+//        System.out.println(v1);
+            for (int i = 0; i < chars.length - n + 1; i++) {
+                if (hash1.get(i, i + n - 1) == v1) {
+                    res.add(i);
+                }
+            }
+//        System.out.println("res = " + res);
+            if (!res.equals(ans)) {
+                System.out.println("expect = " + ans + ",result = " + res);
+                ok = false;
+                break;
+            }
+        }
+        System.out.println(ok ? "ok" : "error");
+    }
+
+    //测试马拉车
+    static void test02() {
+        System.out.println("测试双模hash 和 马拉车");
+        boolean ok = true;
+        long t1 = 0, t2 = 0, time = 0;
+        String errorStr = "";
+
+        next:
+        for (int T = 10; T > 0; T--) {
+
+            String s = new String(RandomArrayUtils.randomCharArray(100, (int) 1e4));
+            long c1 = 0, c2 = 0;
+            time++;
+
+            StringHashPalindrome hash = new StringHashPalindrome(s.toCharArray());
+
+
+            // 马拉车
+            ManacherTemplate.Manacher manacher = new ManacherTemplate.Manacher(s);
+
+            for (int i = 0; i < s.length(); i++) {
+                for (int j = i + 1; j < s.length(); j++) {
+                    long st = System.currentTimeMillis();
+                    boolean checkResult = hash.isPalindromeString(i, j);
+                    long ed = System.currentTimeMillis();
+                    boolean manacherQueryResult = manacher.query(i, j + 1);
+                    long e2 = System.currentTimeMillis();
+                    if (checkResult != manacherQueryResult) {
+                        ok = false;
+                        errorStr = s;
+                        System.out.println("String = " + s.substring(i, j + 1) + " query = {  " + i + " " + j + " }" + " result = " + checkResult + ",manacher = " + manacherQueryResult);
+
+                        break next;
+                    }
+
+                    c1 += (ed - st);
+                    c2 += (e2 - ed);
+                }
+            }
+            t1 += c1;
+            t2 += c2;
+        }
+        System.out.println(ok ? "ok" : "fail");
+        if (ok) {
+            System.out.println("string hash       : " + (t1 * 1.0 / 100) + ":ms");
+            System.out.println("manacher          : " + (t2 * 1.0 / 100) + ":ms");
+        } else {
+            System.out.println(time);
+        }
+    }
+
+
+    static void test03() {
+        System.out.println("测试双模hash 和 普通hash ");
+        boolean ok = true;
+        long t1 = 0, t2 = 0, time = 0;
+        String errorStr = "";
+
+        next:
+        for (int T = 10; T > 0; T--) {
+
+
+            String s = new String(RandomArrayUtils.randomCharArray(100, (int) 1e5));
+            long c1 = 0, c2 = 0;
+            time++;
+            StringHashPalindrome hash = new StringHashPalindrome(s.toCharArray());
+
+            StringHashMod.StringHash3.initHash(s.toCharArray(),true);
+
+            for (int i = 0; i < s.length(); i++) {
+                for (int j = i + 1; j < s.length(); j++) {
+                    long st = System.currentTimeMillis();
+                    boolean checkResult = hash.isPalindromeString(i, j);
+                    long ed = System.currentTimeMillis();
+                    boolean stringhash1Result = StringHashMod.StringHash3.isPalindromeString(i,j);
+                    long e2 = System.currentTimeMillis();
+                    if (checkResult != stringhash1Result) {
+                        ok = false;
+                        errorStr = s;
+                        System.out.println("String = " + s.substring(i, j + 1) + " query = {  " + i + " " + j + " }" + " result = " + checkResult + ",stringhash1Result = " + stringhash1Result);
+
+                        break next;
+                    }
+
+                    c1 += (ed - st);
+                    c2 += (e2 - ed);
+                }
+            }
+            t1 += c1;
+            t2 += c2;
+        }
+        System.out.println(ok ? "ok" : "fail");
+        if (ok) {
+            System.out.println("双模hash      : " + (t1 * 1.0 / 100) + ":ms");
+            System.out.println("单hash        : " + (t2 * 1.0 / 100) + ":ms");
+        } else {
+            System.out.println(time);
+        }
+    }
+
+
+}

@@ -95,7 +95,7 @@ public class ${TM_FILENAME/(\w+)\.java/\1/g} {
         }
 
 
-        static boolean isDebug = false;
+        static boolean isDebug = true;
         public  void dbg(Object ...args) {
             if(!isDebug){
                 return;

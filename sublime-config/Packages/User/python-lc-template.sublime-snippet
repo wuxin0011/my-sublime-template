@@ -7,17 +7,22 @@ from itertools import accumulate, combinations, permutations, count, product
 from typing import *
 import sys,math
 import os
+
+
 IS_LOCAL = os.getenv("LEETCODE_USERNAME") != None
-input = lambda: sys.stdin.readline().strip()
+if IS_LOCAL:
+    input = lambda: sys.stdin.readline().strip()
+    I   = lambda : input()
+    II  = lambda : int(I())
+    LI  = lambda : list(I())
+    LII = lambda : list(map(int,I().split()))
+
+
+
 inf = math.inf
-
-I   = lambda : input()
-II  = lambda : int(I())
-LI  = lambda : list(I())
-LII = lambda : list(map(int,I().split()))
-
-
-
+fmax = lambda x,y : x if x > y else y
+fmin = lambda x,y : y if x < y else y
+mod = MOD = int(1e9 + 7)
 
 
 

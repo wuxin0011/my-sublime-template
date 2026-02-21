@@ -3,9 +3,13 @@
 	"auto_match_enabled": true,
 	/*"font_size": 10,*/
 	"theme": "Adaptive.sublime-theme",
-	"color_scheme": "Catppuccin Mocha.sublime-color-scheme",
+	"color_scheme": "Monokai.sublime-color-scheme",
 	"ignored_packages":
 	[
+		"LSP-clangd",
+		"LSP-gopls",
+		"LSP-jdtls",
+		"LSP-pylsp",
 		"Vintage",
 	],
 	"font_face": "Fira Code",
@@ -23,4 +27,5 @@
 	"show_panel":true,
 	"use_current_file_syntax": false,
     "default_new_file_syntax": "Packages/C++/C++.sublime-syntax",
+    "disabled_clients": ["jdtls"],
 }

@@ -1,24 +1,36 @@
 {
     "clients": {
         "clangd": {
-            "enabled": true,
+            "enabled": false,
             "command": ["clangd"],
             "selector": "source.c | source.c++ | source.objc | source.objc++",
             "initializationOptions": {
-                "headerInsertion": "never"
+                "headerInsertion": "never",
             },
 
             "settings": {
                 "editor": {
                   "tabSize": 4,
-                  "insertSpaces": true
+                  "insertSpaces": true,
                 },
                 "clangd": {
                   "completion": {
-                    "includeInsertion": false  
-                  }
-                }
-              }
-        }
-    }
+                    "includeInsertion": false,  
+                  },
+                },
+              },
+        },
+        "gopls":{
+            "enabled":false,
+        },
+        "pylsp":{
+            "enabled":false,
+        },
+        "jdtls":{
+            "enabled":false,
+        },
+        // 关闭了Java.go.python 的lsp支持
+        // "disabled_clients": ["gopls","pylsp"],
+        // "disabled_clients": ["jdtls","gopls","c"]
+    },
 }

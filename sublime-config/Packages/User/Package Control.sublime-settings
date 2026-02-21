@@ -2,6 +2,7 @@
 	"bootstrapped": true,
 	"installed_packages":
 	[
+		"auto-save",
 		"Catppuccin color schemes",
 		"CompetitiveProgrammingParser",
 		"CppFastOlympicCoding",
@@ -11,6 +12,8 @@
 		"LSP",
 		"LSP-clangd",
 		"LSP-gopls",
+		"LSP-jdtls",
+		"LSP-pylsp",
 		"Package Control",
 		"Theme - Adaptify",
 		"Theme - Coffee",
