@@ -9,35 +9,15 @@ using namespace dbg;
 #else
 #define debug(...) ((void)0)
 #endif
-// init array start ===================================
 template <typename T, size_t N>
-void mst(T (&arr)[N], const T& value, size_t size = N) {
-    size = std::min(size, N);
-    for (size_t i = 0; i < size; ++i) {
-        arr[i] = value;
-    }
-}
-
+void mst(T (&arr)[N], const T& value, size_t size = N) {size = std::min(size, N);for (size_t i = 0; i < size; ++i) arr[i] = value;}
 template <typename T, size_t N, typename... Args>
-void mst(T (&arr)[N],
-                    const typename std::remove_all_extents<T>::type& value,
-                    size_t first_dim, Args... dims) {
-    first_dim = std::min(first_dim, N);
-    for (size_t i = 0; i < first_dim; ++i) {
-        mst(arr[i], value, dims...);
-    }
-}
+void mst(T (&arr)[N],const typename std::remove_all_extents<T>::type& value,size_t first_dim, Args... dims) {first_dim = std::min(first_dim, N);for (size_t i = 0; i < first_dim; ++i) mst(arr[i], value, dims...);}
 
-template <typename Array, typename ValueType, typename... Dims>
-void initArray(Array& arr, const ValueType& value, Dims... dims) {
-    // static_assert(sizeof...(Dims) <= std::rank<Array>::value,
-    //              "Too many dimension arguments!");
-    mst(arr, value, dims...);
-}
 
-// init array end ===================================
-
-#define F(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for0(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for1(i,e)  for (int (i) = 0;  (i) < (e); (i) += (1))
+#define for2(i,e)  for (int (i) = e - 1;  (i) >= 0; (i) -= (1))
 #define all(v) (v).begin(), (v).end()
 #define lower(a, x) std::lower_bound((a).begin(), (a).end(), x) - (a).begin()
 #define upper(a, x) std::upper_bound((a).begin(), (a).end(), x) - (a).begin()
@@ -47,6 +27,7 @@ void initArray(Array& arr, const ValueType& value, Dims... dims) {
 #define pf push_front
 #define qf pop_front
 #define rnq(a) do {std::sort((a).begin(), (a).end());(a).erase(std::unique((a).begin(), (a).end()),(a).end());} while (0)
+
 using ll = long long;
 using ull = unsigned long long;
 using pll = std::pair<ll, ll>;

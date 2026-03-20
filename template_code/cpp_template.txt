@@ -25,15 +25,18 @@ void initArray(Array& arr, const ValueType& value, Dims... dims) {mst(arr, value
 // init array end ===================================
 
 
-#define F(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for0(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for1(i,e)  for (int (i) = 0;  (i) < (e); (i) += (1))
+#define for2(i,e)  for (int (i) = e - 1;  (i) >= 0; (i) -= (1))
 #define all(v) (v).begin(), (v).end()
 #define lower(a, x) std::lower_bound((a).begin(), (a).end(), x) - (a).begin()
 #define upper(a, x) std::upper_bound((a).begin(), (a).end(), x) - (a).begin()
 #define len(x) int((x).size())
-#define pb push_back
-#define qb pop_back
-#define pf push_front
-#define qf pop_front
+#define __lg2(x) int((x==0?0:(std::log2((x)))))
+#define bit_count(x) int(__builtin_popcountll(x))
+#define bit_length(x) (__lg2(x) + 1)
+#define bit_high(x) (__lg2(x))
+#define bit_low(x) int((x==0) ? -1 : __builtin_ctzll(x)) 
 #define rnq(a) do {std::sort((a).begin(), (a).end());(a).erase(std::unique((a).begin(), (a).end()),(a).end());} while (0)
 
 using ll = long long;

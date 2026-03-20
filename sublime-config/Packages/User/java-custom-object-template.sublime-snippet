@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+public static class Info implements Comparable<Info>{
+        int id;
+        int val;
+        Info(int id,int val) {
+            this.id = id;
+            this.val = val;
+        }
+        @Override
+        public int hashCode(){
+            return Objects.hash(id,val);
+        }
+        @Override
+        public boolean equals(Object o) {
+            if(o instanceof Info) {
+                Info info = (Info) o;
+                return id == info.id && val == info.val;
+            }
+            return false;
+        }
+        @Override
+        public String toString() {
+            return String.format("[id = %d,val = %d]\n",id,val);
+        }
+
+        @Override
+        public int compareTo(Info info) {
+            return id  - info.id;
+        }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>customObject</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

@@ -40,6 +40,41 @@
                 return;
             }
 
+
+                        // 注册 Java 代码补全
+            monaco.languages.registerCompletionItemProvider('c', {
+                provideCompletionItems: function(model, position) {
+                    const word = model.getWordUntilPosition(position);
+                    const range = {
+                        startLineNumber: position.lineNumber,
+                        endLineNumber: position.lineNumber,
+                        startColumn: word.startColumn,
+                        endColumn: word.endColumn
+                    };
+
+                    return {
+                        suggestions: [
+                             {
+                                label: 'lcctemplate',
+                                kind: monaco.languages.CompletionItemKind.Snippet,
+                                insertText: `#define MOD 1000000007
+#define N 200005
+#define inf 1000000000
+#define max(a, b) ((a) > (b) ? (a) : (b))
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define abs(x) ((x) > 0 ? (x) : -(x))
+#define swap(a, b) { typeof(a) t = a; a = b; b = t; }`,
+                                insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                                range: range,
+                                documentation: 'c template'
+                            },
+
+                        ]
+                    };
+                }
+            });
+
+
             // 注册 Java 代码补全
             monaco.languages.registerCompletionItemProvider('java', {
                 provideCompletionItems: function(model, position) {
@@ -92,6 +127,43 @@
                                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                                 range: range,
                                 documentation: '创建新的 HashMap'
+                            },
+                            {
+                                label: 'customObject',
+                                kind: monaco.languages.CompletionItemKind.Snippet,
+                                insertText: `
+   public static class Info implements Comparable<Info>{
+            int id;
+            int val;
+            Info(int id,int val) {
+                this.id = id;
+                this.val = val;
+            }
+            @Override
+            public int hashCode(){
+                return Objects.hash(id,val);
+            }
+            @Override
+            public boolean equals(Object o) {
+                if(o instanceof Info) {
+                    Info info = (Info) o;
+                    return id == info.id && val == info.val;
+                }
+                return false;
+            }
+            @Override
+            public String toString() {
+                return String.format("[id = %d,val = %d]\\n",id,val);
+            }
+
+            @Override
+            public int compareTo(Info info) {
+                return id  - info.id;
+            }
+  }`,
+                                insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                                range: range,
+                                documentation: '自定义对象'
                             },
                             {
                                 label: 'newlist',
@@ -184,7 +256,7 @@
                                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                                 range: range,
                                 documentation: '倒序 for 循环'
-                            },                       
+                            },
                             {
                                 label: 'lcsimple',
                                 kind: monaco.languages.CompletionItemKind.Snippet,
@@ -218,16 +290,20 @@ template <typename T, size_t N, typename... Args>
 void mst(T (&arr)[N],const typename std::remove_all_extents<T>::type& value,size_t first_dim, Args... dims) {first_dim = std::min(first_dim, N);for (size_t i = 0; i < first_dim; ++i) mst(arr[i], value, dims...);}
 
 
-#define F(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for0(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for1(i,e)  for (int (i) = 0;  (i) < (e); (i) += (1))
+#define for2(i,e)  for (int (i) = e - 1;  (i) >= 0; (i) -= (1))
 #define all(v) (v).begin(), (v).end()
 #define lower(a, x) std::lower_bound((a).begin(), (a).end(), x) - (a).begin()
 #define upper(a, x) std::upper_bound((a).begin(), (a).end(), x) - (a).begin()
 #define len(x) int((x).size())
-#define pb push_back
-#define qb pop_back
-#define pf push_front
-#define qf pop_front
+#define __lg2(x) int((x==0?0:(std::log2((x)))))
+#define bit_count(x) int(__builtin_popcountll(x))
+#define bit_length(x) (__lg2(x) + 1)
+#define bit_high(x) (__lg2(x))
+#define bit_low(x) int((x==0) ? -1 : __builtin_ctzll(x))
 #define rnq(a) do {std::sort((a).begin(), (a).end());(a).erase(std::unique((a).begin(), (a).end()),(a).end());} while (0)
+
 
 using ll = long long;
 using ull = unsigned long long;
@@ -283,16 +359,20 @@ template <typename T, size_t N, typename... Args>
 void mst(T (&arr)[N],const typename std::remove_all_extents<T>::type& value,size_t first_dim, Args... dims) {first_dim = std::min(first_dim, N);for (size_t i = 0; i < first_dim; ++i) mst(arr[i], value, dims...);}
 
 
-#define F(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for0(i, s, e, t)  for (int(i) = (s); (t) >= 1 ? ((i) <= (e)) : ((i) >= (e)); (i) += (t))
+#define for1(i,e)  for (int (i) = 0;  (i) < (e); (i) += (1))
+#define for2(i,e)  for (int (i) = e - 1;  (i) >= 0; (i) -= (1))
 #define all(v) (v).begin(), (v).end()
 #define lower(a, x) std::lower_bound((a).begin(), (a).end(), x) - (a).begin()
 #define upper(a, x) std::upper_bound((a).begin(), (a).end(), x) - (a).begin()
 #define len(x) int((x).size())
-#define pb push_back
-#define qb pop_back
-#define pf push_front
-#define qf pop_front
+#define __lg2(x) int((x==0?0:(std::log2((x)))))
+#define bit_count(x) int(__builtin_popcountll(x))
+#define bit_length(x) (__lg2(x) + 1)
+#define bit_high(x) (__lg2(x))
+#define bit_low(x) int((x==0) ? -1 : __builtin_ctzll(x))
 #define rnq(a) do {std::sort((a).begin(), (a).end());(a).erase(std::unique((a).begin(), (a).end()),(a).end());} while (0)
+
 
 using ll = long long;
 using ull = unsigned long long;
