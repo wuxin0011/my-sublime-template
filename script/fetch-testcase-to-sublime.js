@@ -1,14 +1,15 @@
 // ==UserScript==
-// @name         算法题样例抓取器 (支持CF/vjudge/牛客/洛谷)
+// @name         sublime专用 算法题样例抓取器 (支持CF/vjudge/牛客/洛谷/atcoder)
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  抓取Codeforces/vjudge/牛客/洛谷题目样例，一键复制为test/correct_answers格式，按钮可拖动
+// @description  抓取Codeforces/vjudge/牛客/atcoder/洛谷题目样例，一键复制为test/correct_answers格式，按钮可拖动
 // @author       You
 // @match        https://codeforces.com/contest/*/problem/*
 // @match        https://codeforces.com/problemset/problem/*
 // @match        https://vjudge.net/problem/*
-// @match        https://ac.nowcoder.com/acm/contest/*
+// @match        https://ac.nowcoder.com/acm/contest/*/*
 // @match        https://ac.nowcoder.com/acm/problem/*
+// @match        https://atcoder.jp/contests/*/tasks/*
 // @match        https://www.luogu.com.cn/problem/*
 // @icon         https://codeforces.com/favicon.ico
 // @grant        none
@@ -169,6 +170,7 @@
         if (hostname.includes('vjudge.net')) return 'vjudge';
         if (hostname.includes('nowcoder.com')) return 'nowcoder';
         if (hostname.includes('luogu.com.cn')) return 'luogu';
+        if (hostname.includes('atcoder.jp')) return 'atcoder';
         return 'unknown';
     }
 
@@ -434,6 +436,57 @@
         }
     }
 
+
+
+
+    // 从牛客网提取样例
+    async function extractAtcoderSamples() {
+        try {
+            showToast('⏳ 正在提取atcoder样例...');
+            // 等待题目区域加载
+            await waitForElement('.part [id^="pre-sample"]', 10000);
+            let info = []
+            for(let d of document.querySelectorAll('.part [id^="pre-sample"]')){
+               info.push(d.textContent)
+            }
+            let inputAndOutPut = []
+            for(let i = 0;i<info.length/2;i++) {inputAndOutPut.push(info[i])}
+            if (inputAndOutPut.length === 0) {
+                showToast('❌ 未找到输入样例');
+                return null;
+            }
+
+            const result = [];
+
+            for (let i = 0; i < inputAndOutPut.length; i += 2) {
+                const inputArea = inputAndOutPut[i];
+                if(i+1>=inputAndOutPut.length){
+                    showToast('❌ 提取失败');
+                    break;
+                }
+                const outputArea = inputAndOutPut[i + 1]; // 可能没有对应的output
+                let inputText = inputArea.trim();
+                let outputText = outputArea.trim();
+                if(outputText) {
+                    outputText = outputText.trimEnd()
+                }
+                if (inputText.length > 0 && !inputText.endsWith('\n')) {
+                    inputText += '\n';
+                }
+                result.push({
+                    test: inputText,
+                    correct_answers: [outputText]
+                });
+            }
+
+            return result;
+        } catch (error) {
+            console.error('提取样例失败:', error);
+            showToast('❌ 提取失败: ' + error.message);
+            return null;
+        }
+    }
+
     // 从Codeforces原站提取样例
     function extractCFSamples() {
         const sampleTests = document.querySelector('div.sample-tests');
@@ -523,6 +576,9 @@
                     break;
                 case 'luogu':
                     result = await extractLuoguSamples();
+                    break;
+                case 'atcoder':
+                    result = await extractAtcoderSamples();
                     break;
                 default:
                     showToast('❌ 不支持的网站');
